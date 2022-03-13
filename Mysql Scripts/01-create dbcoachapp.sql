@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS dbcoachapp;
+CREATE DATABASE dbcoachapp;
