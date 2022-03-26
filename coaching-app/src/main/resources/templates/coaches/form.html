@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,39 +60,40 @@
 				<div class="box">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
-					<form action="#" method="post">
-						<input type="text" class="input-field" placeholder="Team Members Name">
-						<input type="text" class="input-field" placeholder="Date" onfocus="(this.type='date')">
-							<select name="position" class="select">
-								<option value='1' selected disabled > Role/ Position </option>
-								<option value='2'>Analyst</option>
-								<option value='3'>QA Tester</option>
-								<option value='4'>Front-End Developer</option>
-								<option value='5'>Back-End Developer</option>
-							</select>
-						<input type="textbox" class="input-field" placeholder="Supervisor/ Manager">
+					<form th:action="@{/coachform}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+						<input type="text" th:field = "*{empName}" class="input-field" placeholder="Team Members Name">
+						<input type="text" th:field = "*{coachDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">
+						<input type="text" th:field = "*{empRole}" class="input-field" placeholder="Role/ Position">
+							<!-- <select name="position" class="select">
+								<option th:field = "*{empName}" value='' selected disabled > Role/ Position </option>
+								<option th:field = "*{empName}" value='Analyst'>Analyst</option>
+								<option value='Tester'>QA Tester</option>
+								<option value='FE Dev'>Front-End Developer</option>
+								<option value='BE Dev'>Back-End Developer</option>
+							</select> -->
+						<input type="textbox" th:field = "*{coachName}" class="input-field" placeholder="Supervisor/ Manager">
 					
 						<h6> Coaching Topic/ Area </h6>
-						<textarea name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachTopic}" name="topic" class="topic"></textarea>
 						
 						<h6> Desired Outcome <span class="description"> <em>(list desired behaviors, knowledge, skills, etc.)</em></span></h6>
-						<textarea name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachOutcome}" name="topic" class="topic"></textarea>
 						
 						<h6> Benefits of Change <span class="description"> <em>(How will employee performance be positively impacted?)</em></span></h6>
-						<textarea name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachBenefits}" name="topic" class="topic"></textarea>
 						
 						<h6> Action Plan <span class="description"> <em>(What actions should be taken to achieve these goals?)</em></span></h6>
-						<textarea name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachAction}" name="topic" class="topic"></textarea>
 						
 						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
-						<textarea name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachTimeline}" name="topic" class="topic"></textarea>
 
 						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
-							<input type="file" name="file" class="topic2"/><br>
+							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
 						</div>
 						
-						<button type ="submit" name="submit" value= "submit" >SUBMIT</button>
+						<button type ="submit" name="submit">SUBMIT</button>
 					</form>
 				</div>
 			</div>
