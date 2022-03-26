@@ -5,7 +5,6 @@ CREATE TABLE user
 	id int NOT NULL AUTO_INCREMENT,
     first_name varchar(77) DEFAULT NULL,
     last_name varchar(77) NOT NULL,
-    username varchar(77) UNIQUE NOT NULL,
     `role` varchar(22) NOT NULL,
     email varchar(77) UNIQUE NOT NULL,
     phone_number varchar(13),
