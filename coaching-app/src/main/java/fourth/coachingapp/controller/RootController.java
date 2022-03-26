@@ -33,6 +33,14 @@ public class RootController
 		return ("admin/adminlogin");
 	}
 
+	@GetMapping("/admins")
+	public String admins(Model model)
+	{
+		User user = new User();
+		model.addAttribute("user", user);
+		return ("admin/admin");
+	}
+
 	@GetMapping("/home")
 	public String home(Model model)
 	{
