@@ -177,6 +177,7 @@ form{
 
 }
 .topic{
+	position: relative;
 	width:1015px;
 	padding: 15px;
 	padding-bottom: 20px;
@@ -184,6 +185,22 @@ form{
 	border-radius: 10px;
 	outline: 1px solid black;
 	height: 150px;
+}
+#topic{
+	width:1015px;
+	padding: 15px;
+	padding-bottom: 20px;
+	margin: 5px;	
+	border-radius: 10px;
+	outline: 1px solid black;
+	height: 150px;
+}
+.topic2{
+	position: relative;
+	top: 50px;
+	margin: auto;
+	width: 50%;
+	color: grey;
 }
 textarea{
 	margin-top:10px;
@@ -212,4 +229,131 @@ button{
 	margin-top: 40px;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
+/*Home Page*/
+#dashboard{
+	position: relative;
+	top: 5px;
+}
+#profile-name{
+	position: relative;
+	top: 10px;
+	right: 10px;
+}
+#sidebar{
+	position: fixed;
+	height: 100%;
+	width: 16.2%;
+	left:0;
+	top:55px;
+	padding: 80px 0 20px 0;
+	color: #fff;
+	background-color: #ff0000;
+	box-shadow: 5px 0 5px -5px #333;
+	border-top: 2px solid #f7f5f5;
+}
+#side-toggle{
+	position: fixed;
+	z-index: 2;
+	top: 15px;
+	left: 25px;
+	float: right;
+	font-size: 20px;
+	cursor: pointer;
+}
+#sidebar-menu{
+	display: flex;
+	align-items: center;
+	padding: 10px 25px;
+	width: 100%;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	text-decoration: none;
+	color: #fff;
+}
+#title{
+	position: relative;
+	padding: 10px;
+	margin: 0;
+}
+#add{
+	position: relative;
+	right: -500px;
+	border: 0;
+}
+#add:hover{
+	position: relative;
+	right: -500px;
+	background: aqua;
+	border: 0;
+}
+#view{
+	position: relative;
+	top: -30px;
+	color: #fff;
+	background: #002D62;
+	border: 0;
+}
+#view:hover{
+	position: relative;
+	top: -30px;
+	color: grey;
+	background: white;
+	border: 0;
+}
+#update{
+	position: relative;
+	top: -30px;
+	color: black;
+	background: #ffdf00;
+	border: 0;
+}
+#update:hover{
+	position: relative;
+	top: -30px;
+	color: grey;
+	background: white;
+	border: 0;
+}
+#sidebar-menu > span {
+	font-size: 25px;
+	padding-right: 30px;	
+}
+#sidebar-menu-active > span {
+	font-size: 25px;
+	padding-right: 30px;	
+}
+#sidebar-menu:hover{
+	color: #ff0000;
+	background-color: #fff;
+	border-radius: 8px;
+}
+#sidebar-menu-active{
+	display: flex;
+	align-items: center;
+	padding: 10px 25px;
+	width: 100%;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+	color: #ff0000;
+	background-color: #fff;
+	border-radius: 8px;
+}
+#toggle:checked ~ #sidebar{
+	width: 70px;
+}
+#toggle:checked ~ #sidebar #sidebar-menu > p{
+	display: none;
+}
+#toggle:checked ~ #sidebar #sidebar-menu-active > p{
+	display: none;
+}
+#sidebar-menu > p{
+	position: relative;
+	top: 10px;
+}
+#sidebar-menu-active > p{
+	position: relative;
+	top: 10px;
+}
+
 
