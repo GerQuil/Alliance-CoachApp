@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="./static/form.css">
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <title>Coaching Home Page</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h4 id="dashboard"> Dashboard </h4>
+        <div class="profile">
+            <!-- <span class="fas fa-search"></span> -->
+                <img class="profile-image" src="./assets/logo1.png">
+            <p id="profile-name"> Coach Profile </p>
+        </div>
+    </nav>
+
+        
+        <input type="checkbox" id="toggle">
+        <label id="side-toggle" for="toggle">
+            <span class="fas fa-bars"></span>
+        </label>
+        
+        <div id="sidebar">
+            
+            <div id="sidebar-menu-active">
+                <span class="fa fa-home">
+                </span>
+                    <p>Home</p>
+            </div>
+            
+            <a href="form.html" id="sidebar-menu">
+                <span class="fas fa-file-alt">
+                </span>
+                    <p>Coaching Form</p>
+            </a>
+            
+            <div id="sidebar-menu">
+                <span class="fa fa-user">
+                </span>
+                    <p>Profile</p>
+            </div>
+            
+            <div id="sidebar-menu">
+                <span class="fas fa-cog">
+                </span>
+                    <p>Logout</p>
+            </div>	
+        </div>
+        
+        <main>
+            <div class="dashboard-container">
+                <div class="box">
+				    <h4 id="title">COACHING FORM LIST</h4>
+                    <form action="#" method="post"> <!--no need to put a form-->
+                        <button type="button" onclick="location.href='form.html';" id="add"><img src="./assets/addscope.svg" alt="add-button"></button><br>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col">Form ID</th>
+                                <th class="col">Team Member Name</th>
+                                <th class="col">Role/Position</th>
+                                <th class="col">Date Created</th>
+                                <th class="col">Supervisor/Manager</th>
+                                <th class="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Fel Lee</td>
+                                <td>Project Manager</td>
+                                <td>03/16/2022</td>
+                                <td>Kerwin Yabao</td>
+                                <td><button type="button" id="view">View</button><button type="button" id="update">Update</button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

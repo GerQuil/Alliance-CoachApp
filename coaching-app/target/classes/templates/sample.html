@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sample Data</title>
+    </head>
+    <body>
+        <!-- form start -->
+        <form th:action="@{/users}" method="post"
+        th:object="${users}" enctype="multipart/form-data">
+
+        <input type="text" th:field = "*{firstName}"
+            class="form-field" placeholder="First Name">
+
+        <input type="text" th:field = "*{lastName}"
+            class="form-field" placeholder="Last Name">
+
+        <input type="text" th:field = "*{username}"
+            id = "username" class="form-field" placeholder="Username">
+
+        <input type="text" th:field = "*{role}"
+            id = "username" class="form-field" placeholder="Role">
+
+        <input type="text" th:field = "*{email}"
+            id = "username" class="form-field" placeholder="Email">
+
+        <input type="text" th:field = "*{password}"
+            id="password1" class="form-field" placeholder="Password">
+        
+        <input type="submit" value="submit">
+        
+        </form>
+        <!-- form end -->
+    </body>
+</html>
