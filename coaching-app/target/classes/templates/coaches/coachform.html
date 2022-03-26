@@ -30,7 +30,7 @@
 		
 		<div id="sidebar">
 			
-			<a href="home.html" id="sidebar-menu">
+			<a th:href="@{home.html}" id="sidebar-menu">
 				<span class="fa fa-home">
 				</span>
 					<p>Home</p>
@@ -60,17 +60,17 @@
 				<div class="box">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
-					<form th:action="@{/coachform}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<!-- <form th:action="@{/coachform}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<input type="text" th:field = "*{empName}" class="input-field" placeholder="Team Members Name">
 						<input type="text" th:field = "*{coachDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">
 						<input type="text" th:field = "*{empRole}" class="input-field" placeholder="Role/ Position">
-							<!-- <select name="position" class="select">
+							 <select name="position" class="select">
 								<option th:field = "*{empName}" value='' selected disabled > Role/ Position </option>
 								<option th:field = "*{empName}" value='Analyst'>Analyst</option>
 								<option value='Tester'>QA Tester</option>
 								<option value='FE Dev'>Front-End Developer</option>
 								<option value='BE Dev'>Back-End Developer</option>
-							</select> -->
+							</select>
 						<input type="textbox" th:field = "*{coachName}" class="input-field" placeholder="Supervisor/ Manager">
 					
 						<h6> Coaching Topic/ Area </h6>
@@ -94,7 +94,7 @@
 						</div>
 						
 						<button type ="submit" name="submit">SUBMIT</button>
-					</form>
+					</form> -->
 				</div>
 			</div>
 		</main>
