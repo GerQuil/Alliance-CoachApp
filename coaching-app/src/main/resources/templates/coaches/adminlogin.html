@@ -2,13 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title> Admin Login</title>
-	<link rel="stylesheet" type="text/css" href="../static/adminlogin.css">
+	<link rel="stylesheet" type="text/css" href="./static/adminlogin.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<img class="logo" src="../static/logo1.png">
+	<img class="logo" src="./static/logo1.png">
 	<div class="container">
 		<div class="img">
 			<img src="">
@@ -17,7 +17,7 @@
 		<div class="login-content">
 
 			<form action="admin.html" th:action="@{/users}" method="post" th:object="${users}" enctype="multipart/form-data">
-				<img src="../static/user.svg" class="filter-red">
+				<img src="./static/user.svg" class="filter-red">
 				<h2 class="title">LOGIN</h2>
            		
 				<div class="input-div one">
