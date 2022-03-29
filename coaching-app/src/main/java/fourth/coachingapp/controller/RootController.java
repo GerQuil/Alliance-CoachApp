@@ -38,7 +38,7 @@ public class RootController
 	{
 		User user = new User();
 		model.addAttribute("user", user);
-		return ("admin/admin");
+		return ("admin/adminpage");
 	}
 
 	@GetMapping("/home")
