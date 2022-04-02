@@ -15,13 +15,10 @@
     <nav class="navbar">
         <h4 id="dashboard"> Dashboard </h4>
         <div class="profile">
-            <!-- <span class="fas fa-search"></span> -->
                 <img class="profile-image" th:src="@{assets/logo1.png}">
             <p id="profile-name"> Coach Profile </p>
         </div>
     </nav>
-
-        
         <input type="checkbox" id="toggle">
         <label id="side-toggle" for="toggle">
             <span class="fas fa-bars"></span>
@@ -35,7 +32,7 @@
                     <p>Home</p>
             </div>
             
-            <a href="form.html" id="sidebar-menu">
+            <a th:href="@{/coach-form/addform}" id="sidebar-menu">
                 <span class="fas fa-file-alt">
                 </span>
                     <p>Coaching Form</p>
@@ -47,7 +44,7 @@
                     <p>Profile</p>
             </div>
             
-            <div id="sidebar-menu">
+            <div id="sidebar-menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <span class="fas fa-cog">
                 </span>
                     <p>Logout</p>
@@ -58,8 +55,26 @@
             <div class="dashboard-container">
                 <div class="box">
 				    <h4 id="title">COACHING FORM LIST</h4>
+                    <!-- Logout Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="color:black">
+                            Are you sure you want to logout?
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
+                            <button type="button" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                     <form action="#" method="post"> <!--no need to put a form-->
-                        <button type="button" onclick="location.href='form.html';" id="add"><img src="./assets/addscope.svg" alt="add-button"></button><br>
+                        <a th:href='@{/coach-form/addform}' id="add"><img src="./assets/addscope.svg" alt="add-button"></a><br>
                         <table class="table">
                             <thead>
                             <tr>
@@ -78,7 +93,9 @@
                                 <td>Project Manager</td>
                                 <td>03/16/2022</td>
                                 <td>Kerwin Yabao</td>
-                                <td><button type="button" id="view">View</button><button type="button" id="update">Update</button></td>
+                                <td><button type="button" id="view"><a th:href="@{/updateforms}">View</a></button>
+                                    <button type="button" id="update"><a th:href="@{/updateforms}">Update</a></button>
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -86,6 +103,14 @@
                 </div>
             </div>
         </main>
+        <!-- <script>
+            var myModal = document.getElementById('myModal')
+            var myInput = document.getElementById('myInput')
+
+            myModal.addEventListener('shown.bs.modal', function () {
+            myInput.focus()
+            })
+        </script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>

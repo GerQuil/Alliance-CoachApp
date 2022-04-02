@@ -49,11 +49,13 @@ public class RootController
 		return ("coaches/home");
 	}
 
-	@GetMapping("/forms")
-	public String forms(Model model)
+	
+
+	@GetMapping("/updateforms")
+	public String updateforms(Model model)
 	{
 		User user = new User();
 		model.addAttribute("user", user);
-		return ("coaches/coachform");
+		return ("coaches/updateform");
 	}
 }

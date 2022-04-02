@@ -6,7 +6,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 	<!-- My CSS -->
-	<link rel="stylesheet" th:href="@{/css/form.css}">
+	<link rel="stylesheet" th:href="@{./css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 	<title> Coaching Form Page</title>
@@ -16,7 +16,7 @@
 	<nav class="navbar">
 		<h4 id="dashboard"> Dashboard </h4>
 		<div class="profile">
-			 <img class="profile-image" th:src="@{/assets/logo1.png}">
+			 <img class="profile-image" th:src="@{assets/logo1.png}">
 			<p id="profile-name"> Coach Profile </p>
 		</div>
 	</nav>
@@ -55,34 +55,17 @@
 		</div>
 		
 		<main>
-			<div class="dashboard-container" style="position: fixed">
+			<div class="dashboard-container">
 				<div class="box">
-					<h4 id="title">EMPLOYEE COACHING FORM </h4>
+					<a th:href="@{/forms}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Forms page</p></a>
+					<h4 id="title">UPDATE COACHING FORM </h4>
 					<br>
-					<form th:action="@{/coach-form/add}" method="post" th:object="${coachform}" enctype="multipart/form-data">
-						<input type="text" th:field = "*{empName}" class="input-field" placeholder="Team Members Name">
-						<input type="text" th:field = "*{coachDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">
-						<select th:field = "*{empPosition}" name="position" class="select">
-							<option value='Analyst'>Analyst</option>
-							<option value='Tester'>QA Tester</option>
-							<option value='FE Dev'>Front-End Developer</option>
-							<option value='BE Dev'>Back-End Developer</option>
-						</select>
-						<input type="textbox" th:field = "*{coachName}" class="input-field" placeholder="Supervisor/ Manager">
-						<h6> Coaching Topic/ Area </h6>
-						<textarea th:field = "*{coachTopic}" name="topic" class="topic"></textarea>
-						
-						<h6> Desired Outcome <span class="description"> <em>(list desired behaviors, knowledge, skills, etc.)</em></span></h6>
-						<textarea th:field = "*{coachOutcome}" name="topic" class="topic"></textarea>
-						
-						<h6> Benefits of Change <span class="description"> <em>(How will employee performance be positively impacted?)</em></span></h6>
-						<textarea th:field = "*{coachBenefits}" name="topic" class="topic"></textarea>
-						
+					<!-- <form th:action="@{/updateform}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<h6> Action Plan <span class="description"> <em>(What actions should be taken to achieve these goals?)</em></span></h6>
 						<textarea th:field = "*{coachAction}" name="topic" class="topic"></textarea>
-						
-						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
-						<textarea th:field = "*{coachTimeline}" name="topic" class="topic"></textarea>
+
+						<h6> Progress Report <span class="description"> <em>(What actions should be taken to achieve these goals?)</em></span></h6>
+						<textarea th:field = "*{empProgress}" name="topic" class="topic"></textarea>
 
 						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
@@ -90,7 +73,7 @@
 						</div>
 						
 						<button id="subbutton" type="submit" name="submit">SUBMIT</button>
-					</form>
+					</form> -->
 				</div>
 			</div>
 		</main>

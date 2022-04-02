@@ -6,6 +6,16 @@
 	font-family: "Poppins", san-serif;
 }
 
+#update a{
+	text-decoration: none;
+	color: black;
+}
+
+#view a{
+	text-decoration: none;
+	color: white;
+}
+
 body{
 	background-color: #f4f4fb;
 }
@@ -114,7 +124,7 @@ main{
 
 
 .dashboard-container{
-	position: fixed;
+	position: absolute;
 	height: 100%;
 	width: 83%;
 	right:0;
@@ -220,7 +230,7 @@ textarea{
 	margin-right: auto;
 }
 
-button{
+#subbutton{
 	width:100px;
 	padding: 10px;
 	margin: 5px;	
@@ -276,14 +286,30 @@ button{
 	margin: 0;
 }
 #add{
+
 	position: relative;
 	right: -500px;
-	border: 0;
+	background: white;
+	border: 1px solid grey;
+	border-radius: 20px;
+	padding: 10px;
+
 }
 #add:hover{
 	position: relative;
 	right: -500px;
 	background: aqua;
+	border: 0;
+}
+#subbutton:hover{
+	width:100px;
+	padding: 10px;
+	margin: 5px;	
+	border-radius: 10px;
+	margin-top: 40px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	background: rgb(24, 228, 109);
+	color: white;
 	border: 0;
 }
 #view{
