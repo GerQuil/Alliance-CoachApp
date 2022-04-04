@@ -92,7 +92,7 @@ public class UserController
 		log.info("posting");
 		userService.addUser(user);
 		model.addAttribute("users", user);
-		return "sample";
+		return "admin/adminpage";
 	}
 
 	/*
