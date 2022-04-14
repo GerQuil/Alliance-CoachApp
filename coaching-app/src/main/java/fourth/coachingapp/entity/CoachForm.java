@@ -1,56 +1,70 @@
 package fourth.coachingapp.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-//@Entity
-
-// @DynamicInsert
-// @DynamicUpdate
-//@Table(name = "user")
+@Entity
+@DynamicInsert
+@DynamicUpdate
+@Table(name = "coachform")
 public class CoachForm
 {
-	// @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
-	// @Column(name = "id", updatable = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id", updatable = false)
 	private int id;
 
-	// @Column(name = "empName")
-	private String empName;
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.MERGE })
+	@JoinColumn(name = "trainee", updatable = false)
+	private User trainee;
 
-	// @Column(name = "last_name")
-	private String coachDate;
+	@Column(name = "trainee_position")
+	private String traineePosition;
 
-	// @Column(name = "empRole")
-	private String empPosition;
+	@ManyToOne(
+			fetch = FetchType.EAGER,
+			cascade = { CascadeType.MERGE, CascadeType.DETACH, CascadeType.MERGE })
+	@JoinColumn(name = "coach", updatable = false)
+	private User coach;
 
-	// @Column(name = "role")
-	private String coachName;
+	@Column(name = "coaching_topic")
+	private String coachingTopic;
 
-	// @Column(name = "phone_number")
-	private String coachTopic;
+	@Column(name = "desired_outcome")
+	private String desiredOutcome;
 
-	// @Column(name = "password")
-	private String coachOutcome;
+	@Column(name = "benefits_of_change")
+	private String benefitsOfChange;
 
-	// @Column(name = "creation_date")
-	private String coachBenefits;
+	@Column(name = "action_plan")
+	private String actionPlan;
 
-	// @Column(name = "modified_date")
-	private String coachAction;
+	@Column(name = "timeline")
+	private String timeline;
 
-	// @Column(name = "modified_date")
-	private String coachTimeline;
-	
-	// @Column(name = "modified_date")
-	private String coachEvidence;
+	@Column(name = "creation_date")
+	private String creationDate;
+
+	@Column(name = "modified_date")
+	private String modifiedDate;
+
+	public CoachForm()
+	{
+
+	}
 
 	public int getId()
 	{
@@ -62,102 +76,113 @@ public class CoachForm
 		this.id = id;
 	}
 
-	public String getEmpName()
+	public User getTrainee()
 	{
-		return empName;
+		return trainee;
 	}
 
-	public void setEmpName(String empName)
+	public void setTrainee(User trainee)
 	{
-		this.empName = empName;
-	}
-	public String getCoachDate()
-	{
-		return coachDate;
+		this.trainee = trainee;
 	}
 
-	public void setCoachDate(String coachDate)
+	public String getTraineePosition()
 	{
-		this.coachDate = coachDate;
+		return traineePosition;
 	}
 
-	public String getEmpPosition()
+	public void setTraineePosition(String traineePosition)
 	{
-		return empPosition;
+		this.traineePosition = traineePosition;
 	}
 
-	public void setEmpPosition(String empPosition)
+	public User getCoach()
 	{
-		this.empPosition = empPosition;
+		return coach;
 	}
 
-	public String getCoachName()
+	public void setCoach(User coach)
 	{
-		return coachName;
+		this.coach = coach;
 	}
 
-	public void setCoachName(String coachName)
+	public String getCoachingTopic()
 	{
-		this.coachName = coachName;
+		return coachingTopic;
 	}
 
-	public String getCoachTopic()
+	public void setCoachingTopic(String coachingTopic)
 	{
-		return coachTopic;
+		this.coachingTopic = coachingTopic;
 	}
 
-	public void setCoachTopic(String coachTopic)
+	public String getDesiredOutcome()
 	{
-		this.coachTopic = coachTopic;
+		return desiredOutcome;
 	}
 
-	public String getCoachOutcome()
+	public void setDesiredOutcome(String desiredOutcome)
 	{
-		return coachOutcome;
+		this.desiredOutcome = desiredOutcome;
 	}
 
-	public void setCoachOutcome(String coachOutcome)
+	public String getBenefitsOfChange()
 	{
-		this.coachOutcome = coachOutcome;
+		return benefitsOfChange;
 	}
 
-	public String getCoachBenefits()
+	public void setBenefitsOfChange(String benefitsOfChange)
 	{
-		return coachBenefits;
+		this.benefitsOfChange = benefitsOfChange;
 	}
 
-	public void setCoachBenefits(String coachBenefits)
+	public String getActionPlan()
 	{
-		this.coachBenefits = coachBenefits;
+		return actionPlan;
 	}
 
-	public String getCoachTimeline()
+	public void setActionPlan(String actionPlan)
 	{
-		return coachTimeline;
+		this.actionPlan = actionPlan;
 	}
 
-	public void setCoachTimeline(String coachTimeline)
+	public String getTimeline()
 	{
-		this.coachTimeline = coachTimeline;
+		return timeline;
 	}
 
-	public String getCoachAction()
+	public void setTimeline(String timeline)
 	{
-		return coachAction;
+		this.timeline = timeline;
 	}
 
-	public void setCoachAction(String coachAction)
+	public String getCreationDate()
 	{
-		this.coachAction = coachAction;
+		return creationDate;
 	}
 
-	public String getCoachEvidence()
+	public void setCreationDate(String creationDate)
 	{
-		return coachEvidence;
+		this.creationDate = creationDate;
 	}
 
-	public void setCoachEvidence(String coachEvidence)
+	public String getModifiedDate()
 	{
-		this.coachEvidence = coachEvidence;
+		return modifiedDate;
 	}
+
+	public void setModifiedDate(String modifiedDate)
+	{
+		this.modifiedDate = modifiedDate;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "CoachForm [id=" + id + ", trainee=" + trainee + ", traineePosition=" + traineePosition + ", coach="
+				+ coach + ", coachingTopic=" + coachingTopic + ", desiredOutcome=" + desiredOutcome
+				+ ", benefitsOfChange=" + benefitsOfChange + ", actionPlan=" + actionPlan + ", timeline=" + timeline
+				+ ", creationDate=" + creationDate + ", modifiedDate=" + modifiedDate + "]";
+	}
+
 }

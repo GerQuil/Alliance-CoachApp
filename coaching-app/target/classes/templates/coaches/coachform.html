@@ -60,34 +60,35 @@
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
 					<form th:action="@{/coach-form/add}" method="post" th:object="${coachform}" enctype="multipart/form-data">
-						<input type="text" th:field = "*{empName}" class="input-field" placeholder="Team Members Name">
-						<input type="text" th:field = "*{coachDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">
-						<select th:field = "*{empPosition}" name="position" class="select">
+						<input type="text" th:field = "*{trainee.email}" class="input-field" placeholder="Team Members Name">
+						<!-- <ul class="trainee-list"></ul> -->
+						<input type="text" th:field = "*{creationDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">
+						<select th:field = "*{traineePosition}" name="position" class="select">
 							<option value='Analyst'>Analyst</option>
 							<option value='Tester'>QA Tester</option>
 							<option value='FE Dev'>Front-End Developer</option>
 							<option value='BE Dev'>Back-End Developer</option>
 						</select>
-						<input type="textbox" th:field = "*{coachName}" class="input-field" placeholder="Supervisor/ Manager">
+						<input type="textbox" th:field = "*{coach}" class="input-field" placeholder="Supervisor/ Manager">
 						<h6> Coaching Topic/ Area </h6>
-						<textarea th:field = "*{coachTopic}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachingTopic}" name="topic" class="topic"></textarea>
 						
 						<h6> Desired Outcome <span class="description"> <em>(list desired behaviors, knowledge, skills, etc.)</em></span></h6>
-						<textarea th:field = "*{coachOutcome}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{desiredOutcome}" name="topic" class="topic"></textarea>
 						
 						<h6> Benefits of Change <span class="description"> <em>(How will employee performance be positively impacted?)</em></span></h6>
-						<textarea th:field = "*{coachBenefits}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{benefitsOfChange}" name="topic" class="topic"></textarea>
 						
 						<h6> Action Plan <span class="description"> <em>(What actions should be taken to achieve these goals?)</em></span></h6>
-						<textarea th:field = "*{coachAction}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{actionPlan}" name="topic" class="topic"></textarea>
 						
 						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
-						<textarea th:field = "*{coachTimeline}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{timeline}" name="topic" class="topic"></textarea>
 
-						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
+						<!-- <h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
 							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
-						</div>
+						</div> -->
 						
 						<button id="subbutton" type="submit" name="submit">SUBMIT</button>
 					</form>

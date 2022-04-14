@@ -28,7 +28,7 @@ public class User
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name = "email")
+	@Column(name = "email", updatable = false)
 	private String email;
 
 	@Column(name = "role")
@@ -40,7 +40,7 @@ public class User
 	@Column(name = "password")
 	private String password;
 
-	@Column(name = "creation_date")
+	@Column(name = "creation_date", updatable = false)
 	private String creationDate;
 
 	@Column(name = "modified_date")
@@ -75,7 +75,6 @@ public class User
 	{
 		this.lastName = lastName;
 	}
-
 
 	public String getEmail()
 	{
@@ -141,7 +140,7 @@ public class User
 	public String toString()
 	{
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName +
-		", email=" + email + ", phoneNumber=" + phoneNumber + ", password=" + password + ", creationDate="
+				", email=" + email + ", phoneNumber=" + phoneNumber + ", password=" + password + ", creationDate="
 				+ creationDate + ", modifiedDate=" + modifiedDate + "]";
 	}
 

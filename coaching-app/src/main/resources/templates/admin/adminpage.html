@@ -6,7 +6,7 @@
 
 	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 	<!-- My CSS -->
-	<link rel="stylesheet" th:href="@{css/admin.css}">
+	<link rel="stylesheet" th:href="@{/css/admin.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 	<title> Coaching App</title>
@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+
+	<script th:src="@{/js/adminpage.js}"></script>
 	
 	<script type="text/javascript">
 		$(document).ready(function(){
@@ -51,7 +53,7 @@
 		</div>
 		
 		<div class="profile">
-			<img class="profile-image" th:src="@{assets/logo1.png}">
+			<img class="profile-image" th:src="@{/assets/logo1.png}">
 			<p class="profile-name"> Admin Profile </p>
 		</div>
 		
@@ -88,9 +90,9 @@
 		
 			<div class="dashboard-container">
 				<div class="searchbox">
-							<input type="text" placeholder="Search here ..."></input>
-							<a href="#">
-							<i class="fas fa-search"></i>
+							<input id="searchbar" th:value="*{search}" type="text" placeholder="Search here ..."></input>
+							<a id="search" th:href="@{/admin/admin-page}">
+							<i  class="fas fa-search"></i>
 							</a>
 				</div>
 					
@@ -117,104 +119,35 @@
 						<label for="selectAll"></label>
 						</span>
 					</th>
-					<th>Name</th>
+					<th>First Name</th>
+					<th>Last Name</th>
 					<th>Role/Position</th>
 					<th>Contact No.</th>
 					<th>Email</th>
-					<th>Password</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
-			<tr>
+			<tr th:each="user:${users}">
 				<td>
 					<span class="custom-checkbox">
 					<input type="checkbox" id="checkbox1" name="options[]" value="1">
 					<label for="checkbox1"></label>
 					</span>
 				</td>
-				<td th:field="*{name}">Jill Allera</td>
-				<td th:field="*{role}">Analyst</td>
-				<td th:field="*{phoneNumber}">09165448326</td>
-				<td th:field="*{email}">jillallera@gmail.com</td>
-				<td th:field="*{password}">Cebu001</td>
+				<td hidden th:text="${user.id}"></td>
+				<td th:text="${user.firstName}"></td>
+				<td th:text="${user.lastName}"></td>
+				<td th:text="${user.role}"></td>
+				<td th:text="${user.phoneNumber}"></td>
+				<td th:text="${user.email}"></td>
 				<td>
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+					<a href="" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+					<a href="" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
 				</td>
 			</tr>
 			
-			<tr>
-				<td>
-					<span class="custom-checkbox">
-					<input type="checkbox" id="checkbox1" name="options[]" value="1">
-					<label for="checkbox1"></label>
-					</span>
-				</td>
-				<td th:field="*{name}">Fel Lee</td>
-				<td th:field="*{role}">Analyst</td>
-				<td th:field="*{phoneNumber}">09165448326</td>
-				<td th:field="*{email}">fellee@gmail.com</td>
-				<td th:field="*{password}">Cebu002</td>
-				<td>
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				</td>
-			</tr>
 			
-			<tr>
-				<td>
-					<span class="custom-checkbox">
-					<input type="checkbox" id="checkbox1" name="options[]" value="1">
-					<label for="checkbox1"></label>
-					</span>
-				</td>
-				<td th:field="*{name}">Geremy Quilosa</td>
-				<td th:field="*{role}">Analyst</td>
-				<td th:field="*{phoneNumber}">09165448326</td>
-				<td th:field="*{email}">geremy@gmail.com</td>
-				<td th:field="*{password}">Cebu003</td>
-				<td>
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<span class="custom-checkbox">
-					<input type="checkbox" id="checkbox1" name="options[]" value="1">
-					<label for="checkbox1"></label>
-					</span>
-				</td>
-				<td th:field="*{name}">John Doe</td>
-				<td th:field="*{role}">Analyst</td>
-				<td th:field="*{phoneNumber}">09165448326</td>
-				<td th:field="*{email}">johndoe@gmail.com</td>
-				<td th:field="*{password}">Cebu004</td>
-				<td>
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				</td>
-			</tr>
-			
-			<tr>
-				<td>
-					<span class="custom-checkbox">
-					<input type="checkbox" id="checkbox1" name="options[]" value="1">
-					<label for="checkbox1"></label>
-					</span>
-				</td>
-				<td th:field="*{name}">Lavender Smith</td>
-				<td th:field="*{role}">Analyst</td>
-				<td th:field="*{phoneNumber}">09165448326</td>
-				<td th:field="*{email}">lavender@gmail.com</td>
-				<td th:field="*{password}">Cebu005</td>
-				<td>
-					<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-					<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-				</td>
-			</tr>
 			
 			</tbody>
 			</table>
@@ -235,11 +168,11 @@
 			</div>
 			</div>
 			
-			<!-- Edit Modal HTML -->
+			<!-- Add Modal HTML -->
 			<div id="addEmployeeModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form th:action="@{/users}" method="post" th:object="${user}" enctype="multipart/form-data">
+						<form th:action="@{/admin/users/add}" method="post" th:object="${user}" enctype="multipart/form-data">
 	
 							<div class="icon-box">
 								<i class="fa fa-plus"></i>
@@ -287,7 +220,7 @@
 			<div id="editEmployeeModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form th:action="@{/users}" method="post" th:object="${user}" enctype="multipart/form-data">
+						<form th:action="@{/admin/users/update}" method="post" th:object="${user}" enctype="multipart/form-data">
 							<div class="icon-box">
 								<i class="fa fa-pencil-square-o"></i>
 							</div>
@@ -295,25 +228,26 @@
 								<h4 class="modal-title">EDIT USER</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 							</div>
+							<input hidden th:field="*{id}" type="text" id="update_id">
 							<div class="modal-body">	
 								<div class="form-group">
-									<input type="text" th:field="*{firstName}" class="form-control" required placeholder="First Name">
+									<input id="update_fname" type="text" th:field="*{firstName}" class="form-control" required placeholder="First Name">
 								</div>
 								<div class="form-group">
-									<input type="text" th:field="*{lastName}" class="form-control" required placeholder="Last Name">
+									<input id="update_lname" type="text" th:field="*{lastName}" class="form-control" required placeholder="Last Name">
 								</div>
 								<div class="form-group">
-									<select th:field="*{role}" class="form-control" required placeholder="Position">
+									<select id="update_role" th:field="*{role}" class="form-control" required placeholder="Position">
 										<option th:value="'Admin'" th:text="Admin"></option>
 										<option th:value="'Coach'" th:text="Coach"></option>
 										<option th:value="'Trainee'" th:text="Trainee"></option>
 									</select>
 								</div>
 								<div class="form-group">
-									<input type="text" th:field="*{phoneNumber}" class="form-control" required placeholder="Contact No.">
+									<input id="update_phonenum" type="text" th:field="*{phoneNumber}" class="form-control" required placeholder="Contact No.">
 								</div>
 								<div class="form-group">
-									<input type="password" th:field="*{password}" class="form-control" required placeholder="Password">
+									<input id="pass" type="password" th:field="*{password}" class="form-control" placeholder="Password">
 								</div>
 							</div>
 							<div class="modal-footer">
@@ -329,7 +263,8 @@
 			<div id="deleteEmployeeModal" class="modal fade">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form th:action="@{/users}" method="post" th:object="${user}" enctype="multipart/form-data">
+						<form th:action="@{/admin/users/delete}" method="post" th:object="${user}" enctype="multipart/form-data">
+							<input hidden th:field="*{id}" type="text" id="delete_id">
 							<div class="icon-box">
 								<i class="fa fa-trash"></i>
 							</div>
