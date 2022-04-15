@@ -40,6 +40,9 @@ public class User
 	@Column(name = "password")
 	private String password;
 
+	@Column(name = "disabled")
+	private boolean disabled;
+
 	@Column(name = "creation_date", updatable = false)
 	private String creationDate;
 
@@ -111,6 +114,16 @@ public class User
 		return password;
 	}
 
+	public boolean isDisabled()
+	{
+		return disabled;
+	}
+
+	public void setDisabled(boolean disabled)
+	{
+		this.disabled = disabled;
+	}
+
 	public void setPassword(String password)
 	{
 		this.password = password;
@@ -139,9 +152,9 @@ public class User
 	@Override
 	public String toString()
 	{
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName +
-				", email=" + email + ", phoneNumber=" + phoneNumber + ", password=" + password + ", creationDate="
-				+ creationDate + ", modifiedDate=" + modifiedDate + "]";
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", role="
+				+ role + ", phoneNumber=" + phoneNumber + ", password=" + password + ", disabled=" + disabled
+				+ ", creationDate=" + creationDate + ", modifiedDate=" + modifiedDate + "]";
 	}
 
 }

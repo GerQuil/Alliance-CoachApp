@@ -9,6 +9,7 @@ CREATE TABLE user
     email varchar(77) UNIQUE NOT NULL,
     phone_number varchar(13),
     `password` varchar(77) NOT NULL,
+    disabled boolean default false,
     
     
     `creation_date` datetime default current_timestamp,

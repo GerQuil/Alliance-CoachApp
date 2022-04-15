@@ -31,10 +31,10 @@ public class UserService
 		return userRepository.findByRole(role);
 	}
 
-	public List<User> getUserBySearch(String search)
+	public List<User> getUserBySearch(String search, boolean disabled)
 	{
 		search = "%" + search + "%";
-		return userRepository.findBySearch(search);
+		return userRepository.findBySearch(search, disabled);
 	}
 
 	public User getUserById(int id)
@@ -98,9 +98,33 @@ public class UserService
 		}
 		catch (Exception e)
 		{
-//			e.printStackTrace();
+			e.printStackTrace();
 		}
 		return user;
+	}
+
+	public void enableUser(int id)
+	{
+		User user = userRepository.getById(id);
+		user.setDisabled(false);
+		userRepository.save(user);
+	}
+
+	public void disableUser(int id)
+	{
+		User user = userRepository.getById(id);
+		user.setDisabled(true);
+		userRepository.save(user);
+	}
+
+	public boolean isEmailTaken(String email)
+	{
+		User user = getUserByEmail(email);
+		if(user == null)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	public void deleteUser(User user)

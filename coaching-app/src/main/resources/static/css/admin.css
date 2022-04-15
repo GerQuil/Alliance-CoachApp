@@ -511,3 +511,8 @@ form{
 	position: relative;
 	top: 10px;
 }
+
+input.invalid 
+{
+    background-color: #ffdddd;
+}

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fourth.coachingapp.entity.User;
 import fourth.coachingapp.service.UserService;
@@ -27,19 +28,13 @@ public class AdminController
 	@GetMapping("/admin-page")
 	public String admins(
 			Model model,
-			@RequestParam(value = "search", defaultValue = "") String search)
+			@RequestParam(value = "search", defaultValue = "") String search,
+			@RequestParam(value = "search", defaultValue = "false") boolean disabled)
 	{
-		List<User> users;
-		if(!search.equals(""))
-		{
-			users = userService.getUserBySearch(search);
+		List<User> users = userService.getUserBySearch(search, disabled);
 
-		}
-		else
-		{
-			users = userService.getUsers();
-		}
 		model.addAttribute("search", search);
+		model.addAttribute("disabled", disabled);
 		model.addAttribute("users", users);
 
 		User user = new User();
@@ -65,11 +60,26 @@ public class AdminController
 		return "redirect:/admin/admin-page";
 	}
 
-	@PostMapping("users/delete")
-	public String deleteUser(
+	@PostMapping("users/enable")
+	public String enableUser(
 			@ModelAttribute User user)
 	{
-		userService.deleteUserById(user.getId());
+		userService.enableUser(user.getId());
 		return "redirect:/admin/admin-page";
+	}
+
+	@PostMapping("users/disable")
+	public String disableUser(
+			@ModelAttribute User user)
+	{
+		userService.disableUser(user.getId());
+		return "redirect:/admin/admin-page";
+	}
+
+	@GetMapping("/email-check")
+	@ResponseBody
+	public boolean emailCheck(@RequestParam String email)
+	{
+		return userService.isEmailTaken(email);
 	}
 }
