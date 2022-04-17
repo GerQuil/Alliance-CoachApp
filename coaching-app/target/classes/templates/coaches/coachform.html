@@ -59,7 +59,7 @@
 				<div class="box">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
-					<form th:action="@{/coach-form/add}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<form th:action="@{/coach/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<input type="text" th:field = "*{trainee.email}" class="input-field" placeholder="Team Members Name">
 						<!-- <ul class="trainee-list"></ul> -->
 						<input type="text" th:field = "*{creationDate}" class="input-field" placeholder="Date" onfocus="(this.type='date')">

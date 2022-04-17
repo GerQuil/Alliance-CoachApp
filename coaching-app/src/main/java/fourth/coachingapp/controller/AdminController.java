@@ -25,6 +25,14 @@ public class AdminController
 	@Autowired
 	UserService userService;
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ######### RETURNS ADMIN PAGE FORM ##########
+	 * ############################################
+	 * ############################################
+	 */
+
 	@GetMapping("/admin-page")
 	public String admins(
 			Model model,
@@ -42,6 +50,14 @@ public class AdminController
 		return ("admin/adminpage");
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ################ ADD USERS ################
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/add")
 	public String addUser(
 			@ModelAttribute User user)
@@ -50,6 +66,14 @@ public class AdminController
 		userService.addUser(user);
 		return "redirect:/admin/admin-page";
 	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############## UPDATE USERS ################
+	 * ############################################
+	 * ############################################
+	 */
 
 	@PostMapping("users/update")
 	public String updateUser(
@@ -60,6 +84,14 @@ public class AdminController
 		return "redirect:/admin/admin-page";
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# ENABLE USERS ################
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/enable")
 	public String enableUser(
 			@ModelAttribute User user)
@@ -68,6 +100,14 @@ public class AdminController
 		return "redirect:/admin/admin-page";
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# DISABLE USERS ###############
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/disable")
 	public String disableUser(
 			@ModelAttribute User user)
@@ -75,6 +115,14 @@ public class AdminController
 		userService.disableUser(user.getId());
 		return "redirect:/admin/admin-page";
 	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * #### CHECK EMAIL AVAILABILITY USERS #######
+	 * ############################################
+	 * ############################################
+	 */
 
 	@GetMapping("/email-check")
 	@ResponseBody
