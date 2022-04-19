@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<!-- My CSS -->
+	<link rel="stylesheet" th:href="@{/css/profile.css}">
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+	<title> Coaching App</title>
+</head>
+
+<body>
+	<nav class="navbar">
+		<h4> Dashboard </h4>
+		<div class="profile">
+			<span class="fas fa-search"></span>
+			<img class="profile-image" th:src="@{/assets/logo1.png}">
+			<p class="profile-name"> Admin Profile </p>
+		</div>
+	</nav>
+
+		
+		<input type="checkbox" id="toggle">
+		<label class="side-toggle" for="toggle">
+			<span class="fas fa-bars"></span>
+		</label>
+		
+		<div class="sidebar">
+			<div class="sidebar-menu" id="none">
+				<span class="fas fa-home">
+				</span>
+				<a th:href="@{/admin/adminpage.html}"><p>Home</p></a>
+			</div>
+			
+			<div class="sidebar-menu" id="sidebar-menu-active">
+				<span class="fas fa-user">
+				</span>
+					<a th:href="@{/admin/adminpage.html}"> <p>Profile</p></a>
+			</div>	
+			
+			<div class="sidebar-menu" >
+				<span class="fas fa-cog">
+				</span>
+					<p>Logout</p>
+			</div>	
+		</div>
+		
+		<main>
+			<div class="dashboard-container">
+				<div class="container">
+					<div class="title"> Profile </div>
+					<form  th:action="@{/admin/users/add}" method="post" th:object="${user}" enctype="multipart/form-data">
+						<div class="user-details">
+							<div class="input-box">
+								<span class="details"> First Name </span>
+								<input type="text" th:field="*{firstName}" placeholder="First Name" required>
+							</div>
+							<div class="input-box">
+								<span class="details"> Last Name</span>
+								<input type="text" th:field="*{lastName}" placeholder="Lastname" required>
+							</div>
+							<div class="input-box">
+								<span class="details"> Email </span>
+								<input type="text" th:field="*{email}" placeholder="Email address" required>
+							</div>
+							<div class="input-box">
+								<span class="details"> Contact Number </span>
+								<input type="text"th:field="*{phoneNumber}" placeholder="Contact Number" required>
+							</div>
+							<div class="input-box">
+								<span class="details" > Role/ Position </span>
+								<input type="text" th:field="*{role}" placeholder="Role/ Position" required>
+							</div>
+							<div class="input-box">
+								<span class="details"> Password </span>
+								<input type="password" th:field="*{password}"placeholder="Password" required>
+							</div>
+						</div>
+					
+						<div class="button">
+							<input type="submit" value="SAVE">	
+						</div>
+						
+						<div class="button1">
+							<input type="submit" value="CANCEL">	
+						</div>
+					</form>
+				</div>
+			
+			</div>
+		</main>
+		
+</body>
+</html>

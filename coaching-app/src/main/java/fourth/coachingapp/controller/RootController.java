@@ -31,6 +31,15 @@ public class RootController
 		return ("admin/adminlogin");
 	}
 
+	@GetMapping("/profile")
+	public String profile(Model model)
+	{
+		User user = new User();
+		model.addAttribute("user", user);
+		return ("admin/profile");
+	}
+	
+
 	@GetMapping("/home")
 	public String home(Model model)
 	{

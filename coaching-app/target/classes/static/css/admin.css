@@ -264,12 +264,6 @@ form{
 	padding: 12px 15px;
 	vertical-align: middle;
 	}
-	table.table tr th:first-child {
-	width: 60px;
-	}
-	table.table tr th:last-child {
-	width: 100px;
-	}
 	table.table-striped tbody tr:nth-of-type(odd) {
 	background-color: #fcfcfc;
 	}
@@ -470,14 +464,17 @@ form{
 	text-decoration: none;
 	color: #fff;
 }
-#sidebar-menu > span {
-	font-size: 25px;
-	padding-right: 30px;	
-}
+
 #sidebar-menu-active > span {
-	font-size: 25px;
+	font-size: 20px;
 	padding-right: 30px;	
 }
+#none > span {
+	font-size: 20px;
+	padding-right: 30px;	
+}
+
+
 #sidebar-menu:hover{
 	color: #ff0000;
 	background-color: #fff;
@@ -486,14 +483,19 @@ form{
 #sidebar-menu-active{
 	display: flex;
 	align-items: center;
-	padding: 10px 25px;
+	padding: 2px 25px;
 	width: 100%;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 	color: #ff0000;
 	background-color: #fff;
-	border-radius: 8px;
+	border-radius: 10px;
 }
+#none{
+	padding: 2px 25px;
+	border-radius: 10px;
+}
+
 #toggle:checked ~ #sidebar{
 	width: 70px;
 }
@@ -510,6 +512,10 @@ form{
 #sidebar-menu-active > p{
 	position: relative;
 	top: 10px;
+	
+}
+#sidebar-menu-active > a{
+	color:#ff0000;
 }
 
 input.invalid 
