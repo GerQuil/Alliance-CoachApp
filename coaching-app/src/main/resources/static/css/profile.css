@@ -195,6 +195,7 @@ form .user-details .input-box{
 	padding-left: 15px;
 	font-size: 16px;
 }
+
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
 	border-color: #ff0000;
