@@ -34,7 +34,15 @@ public class CoachFormController
 		model.addAttribute("coachform", coachForm);
 		return ("coaches/coachform");
 	}
-
+/////////////////////////////////////////
+	@GetMapping("/updateform")
+	public String updateforms(Model model)
+	{
+		CoachForm updateForm = new CoachForm();
+		model.addAttribute("updateforms", updateForm);
+		return ("coaches/updateforms");
+	}
+/////////////////////////////////////////
 	/*
 	 * ##################################################
 	 * ##################################################
@@ -94,7 +102,26 @@ public class CoachFormController
 		model.addAttribute("coach-form", coachform);
 		return "coaches/coachform";
 	}
+	
+	/*
+	 * #########################
+	 * #########################
+	 * ### Update coach form ###
+	 * #########################
+	 * #########################
+	 */
 
+	// @PostMapping("/update")
+	// public String updateCoachForm(
+	// 		Model model,
+	// 		@ModelAttribute CoachForm coachform)
+	// {
+	// 	log.info("posting");
+	// 	//userService.addUser(coachform);
+	// 	model.addAttribute("coach-form", coachform);
+	// 	return "coaches/updateforms";
+	// }
+	
 	/*
 	 * ###################
 	 * ###################
