@@ -234,10 +234,23 @@ textarea{
 	width:100px;
 	padding: 10px;
 	margin: 5px;	
-	outline:#fff;
 	border-radius: 10px;
 	margin-top: 40px;
+	color: white;
+	background: #ff0000;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	border: none;
+}
+#progbutton{
+	width:100px;
+	padding: 10px;
+	margin: 5px;	
+	border-radius: 10px;
+	margin-top: 40px;
+	color: #ff0000;
+	background: white;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	border: none;
 }
 /*Home Page*/
 #dashboard{
@@ -308,37 +321,61 @@ textarea{
 	border-radius: 10px;
 	margin-top: 40px;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-	background: rgb(24, 228, 109);
+	background: rgb(4, 141, 61);
 	color: white;
-	border: 0;
+	border: none;
+}
+#progbutton:hover{
+	width:100px;
+	padding: 10px;
+	margin: 5px;	
+	border-radius: 10px;
+	margin-top: 40px;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	background: #002D62;
+	color: white;
+	border: none;
 }
 #view{
 	position: relative;
-	top: -30px;
+	top: -5px;
 	color: #fff;
 	background: #002D62;
 	border: 0;
+	padding: 10px;
+	border-radius: 10px;
 }
 #view:hover{
 	position: relative;
-	top: -30px;
-	color: grey;
+	top: -5px;
+	color: black;
 	background: white;
 	border: 0;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 4px 4px 20px rgba(58, 86, 102, 0.1);
+}
+#viewtext:hover{
+	color: black;
 }
 #update{
 	position: relative;
-	top: -30px;
+	top: -5px;
 	color: black;
 	background: #ffdf00;
 	border: 0;
+	padding: 10px;
+	border-radius: 10px;
 }
 #update:hover{
 	position: relative;
-	top: -30px;
+	top: -5px;
 	color: grey;
 	background: white;
 	border: 0;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 4px 4px 20px rgba(58, 86, 102, 0.1);
 }
 #sidebar-menu > span {
 	font-size: 25px;

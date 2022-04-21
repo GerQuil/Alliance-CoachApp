@@ -39,11 +39,11 @@ public class RootController
 		return ("coaches/home");
 	}
 
-	@GetMapping("/updateforms")
-	public String updateforms(Model model)
-	{
-		User user = new User();
-		model.addAttribute("user", user);
-		return ("coaches/updateform");
-	}
+	// @GetMapping("/updateforms")
+	// public String updateforms(Model model)
+	// {
+	// 	User user = new User();
+	// 	model.addAttribute("user", user);
+	// 	return ("coaches/updateform");
+	// }
 }
