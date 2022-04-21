@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	<!-- My CSS -->
+	<link rel="stylesheet" th:href="@{/css/form.css}">
+	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<title> Add Progress Page</title>
+</head>
+
+<body>
+	<nav class="navbar">
+		<h4 id="dashboard"> Dashboard </h4>
+		<div class="profile">
+			 <img class="profile-image" th:src="@{assets/logo1.png}">
+			<p id="profile-name"> Coach Profile </p>
+		</div>
+	</nav>
+
+		
+		<input type="checkbox" id="toggle">
+		<label id="side-toggle" for="toggle">
+			<span class="fas fa-bars"></span>
+		</label>
+		
+		<div id="sidebar">
+			
+			<a th:href="@{/home}" id="sidebar-menu">
+				<span class="fa fa-home">
+				</span>
+					<p>Home</p>
+			</a>
+			
+			<div id="sidebar-menu-active">
+				<span class="fas fa-file-alt">
+				</span>
+					<p>Coaching Form</p>
+			</div>
+			
+			<div id="sidebar-menu">
+				<span class="fa fa-user">
+				</span>
+					<p>Profile</p>
+			</div>	
+			
+			<div id="sidebar-menu">
+				<span class="fas fa-cog">
+				</span>
+					<p>Logout</p>
+			</div>	
+		</div>
+		
+		<main>
+			<div class="dashboard-container">
+				<div class="box">
+					<a th:href="@{/home}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
+					<h4 id="title">ADD PROGRESS FORM</h4>
+					<br>
+					<form th:action="@{/coach-form/update}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
+						<textarea th:field = "*{coachAction}" name="action" class="topic" readonly></textarea><br>
+						
+						<h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
+						<textarea th:field = "*{empProgress}" name="topic" class="topic" readonly></textarea><br>
+						
+						<button id="progbutton" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
+						</span>ADD PROGRESS</button>
+						<input th:field = "*{traineeProgress}" type="text" name="addprogress" class="topic" id="addprogress" style="display:none; visibility:hidden;" />
+
+						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
+						<div class="text-center" id="topic">
+							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
+						</div>
+
+						<button id="subbutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
+						<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button><br>
+					</form>
+				</div>
+			</div>
+		</main>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script>
+		function showInput(){
+			document.getElementById("addprogress").style.display = "block";
+			document.getElementById("addprogress").style.visibility = "visible";
+			document.getElementById("subbutton").style.display = "block";
+			document.getElementById("subbutton").style.visibility = "visible";
+			document.getElementById("canbutton").style.display = "block";
+			document.getElementById("canbutton").style.visibility = "visible";
+			document.getElementById("progbutton").style.display = "none";
+			document.getElementById("progbutton").style.visibility = "hidden";
+		}
+		function hideInput(){
+			document.getElementById("addprogress").style.display = "none";
+			document.getElementById("addprogress").style.visibility = "hidden";
+			document.getElementById("subbutton").style.display = "none";
+			document.getElementById("subbutton").style.visibility = "hidden";
+			document.getElementById("canbutton").style.display = "none";
+			document.getElementById("canbutton").style.visibility = "hidden";
+			document.getElementById("progbutton").style.display = "block";
+			document.getElementById("progbutton").style.visibility = "visible";
+		}
+	</script>
+</body>
+</html>
