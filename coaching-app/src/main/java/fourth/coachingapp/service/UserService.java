@@ -79,6 +79,7 @@ public class UserService
 
 	public User updateUser(User user)
 	{
+		System.out.println(user);
 		try
 		{
 			if(user.getPassword().equals(""))

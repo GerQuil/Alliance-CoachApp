@@ -1,5 +1,6 @@
 package fourth.coachingapp.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.jboss.logging.Logger;
@@ -25,11 +26,19 @@ public class AdminController
 	@Autowired
 	UserService userService;
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ######### RETURNS ADMIN PAGE FORM ##########
+	 * ############################################
+	 * ############################################
+	 */
+
 	@GetMapping("/admin-page")
 	public String admins(
 			Model model,
 			@RequestParam(value = "search", defaultValue = "") String search,
-			@RequestParam(value = "search", defaultValue = "false") boolean disabled)
+			@RequestParam(value = "disabled", defaultValue = "false") boolean disabled)
 	{
 		List<User> users = userService.getUserBySearch(search, disabled);
 
@@ -42,6 +51,33 @@ public class AdminController
 		return ("admin/adminpage");
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ##### RETURNS ADMIN PROFILE PAGE FORM ######
+	 * ############################################
+	 * ############################################
+	 */
+
+	@GetMapping("/profile")
+	public String adminProfile(
+			Model model,
+			Principal principal)
+	{
+		User user = userService.getUserByEmail(principal.getName());
+
+		model.addAttribute("user", user);
+		return ("/admin/profile");
+	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ################ ADD USERS ################
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/add")
 	public String addUser(
 			@ModelAttribute User user)
@@ -50,6 +86,14 @@ public class AdminController
 		userService.addUser(user);
 		return "redirect:/admin/admin-page";
 	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############## UPDATE USERS ################
+	 * ############################################
+	 * ############################################
+	 */
 
 	@PostMapping("users/update")
 	public String updateUser(
@@ -60,6 +104,14 @@ public class AdminController
 		return "redirect:/admin/admin-page";
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# ENABLE USERS ################
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/enable")
 	public String enableUser(
 			@ModelAttribute User user)
@@ -68,6 +120,14 @@ public class AdminController
 		return "redirect:/admin/admin-page";
 	}
 
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# DISABLE USERS ###############
+	 * ############################################
+	 * ############################################
+	 */
+
 	@PostMapping("users/disable")
 	public String disableUser(
 			@ModelAttribute User user)
@@ -75,6 +135,14 @@ public class AdminController
 		userService.disableUser(user.getId());
 		return "redirect:/admin/admin-page";
 	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * #### CHECK EMAIL AVAILABILITY USERS #######
+	 * ############################################
+	 * ############################################
+	 */
 
 	@GetMapping("/email-check")
 	@ResponseBody

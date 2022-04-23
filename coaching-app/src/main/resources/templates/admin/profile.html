@@ -32,20 +32,20 @@
 			<div class="sidebar-menu" id="none">
 				<span class="fas fa-home">
 				</span>
-				<a th:href="@{/admin/adminpage.html}"><p>Home</p></a>
+				<a th:href="@{/admin/admin-page}"><p>Home</p></a>
 			</div>
 			
 			<div class="sidebar-menu" id="sidebar-menu-active">
 				<span class="fas fa-user">
 				</span>
-					<a th:href="@{/admin/adminpage.html}"> <p>Profile</p></a>
+					<a th:href="@{/admin/profile}"> <p>Profile</p></a>
 			</div>	
 			
-			<div class="sidebar-menu" >
+			<div class="sidebar-menu" id="none">
 				<span class="fas fa-cog">
 				</span>
-					<p>Logout</p>
-			</div>	
+				<a th:href="@{/logout}"> <p>Logout</p></a>
+			</div>		
 		</div>
 		
 		<main>

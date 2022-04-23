@@ -29,7 +29,7 @@
 		
 		<div id="sidebar">
 			
-			<a th:href="@{/home}" id="sidebar-menu">
+			<a th:href="@{/coach/home}" id="sidebar-menu">
 				<span class="fa fa-home">
 				</span>
 					<p>Home</p>
@@ -59,7 +59,7 @@
 				<div class="box">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
-					<form th:action="@{/coach-form/add}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<input type="text" th:field = "*{trainee.id}" class="input-field" hidden>
 						<input type="text" class="input-field" placeholder="Team Members Name">
 						<!-- <ul class="trainee-list"></ul> -->

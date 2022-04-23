@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import fourth.coachingapp.algorithms.LocalFileImpl;
 import fourth.coachingapp.security.BcryptSecurity;
 
 @SpringBootApplication
@@ -19,6 +20,12 @@ public class CoachingAppApplication
 	public BcryptSecurity bcryptSecurity()
 	{
 		return new BcryptSecurity();
+	}
+
+	@Bean
+	public LocalFileImpl localFile()
+	{
+		return new LocalFileImpl();
 	}
 
 }

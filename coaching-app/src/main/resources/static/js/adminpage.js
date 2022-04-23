@@ -14,11 +14,11 @@ $(document).ready(
 
             console.log(data);
 
-            $('#update_id').val(data[1]);
-            $('#update_fname').val(data[2]);
-            $('#update_lname').val(data[3]);
-            $('#update_role').val(data[4]);
-            $('#update_phonenum').val(data[5]);
+            $('#update_id').val(data[0]);
+            $('#update_fname').val(data[1]);
+            $('#update_lname').val(data[2]);
+            $('#update_role').val(data[3]);
+            $('#update_phonenum').val(data[4]);
         });
 
         $('.delete').on('click', function()
@@ -34,7 +34,7 @@ $(document).ready(
 
             console.log(data);
 
-            $('#delete_id').val(data[1]);
+            $('#delete_id').val(data[0]);
         });
 
         $('#search').click
