@@ -9,9 +9,8 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<title> Coaching Form Page</title>
+	<title>Coaching Form Page</title>
 </head>
-
 <body>
 	<nav class="navbar">
 		<h4 id="dashboard"> Dashboard </h4>
@@ -20,8 +19,6 @@
 			<p id="profile-name"> Coach Profile </p>
 		</div>
 	</nav>
-
-		
 		<input type="checkbox" id="toggle">
 		<label id="side-toggle" for="toggle">
 			<span class="fas fa-bars"></span>
@@ -29,25 +26,23 @@
 		
 		<div id="sidebar">
 			
-			<a th:href="@{/coach/home}" id="sidebar-menu">
+			<a th:href="@{/coach/coach-forms}" id="sidebar-menu">
 				<span class="fa fa-home">
 				</span>
 					<p>Home</p>
 			</a>
-			
 			<div id="sidebar-menu-active">
 				<span class="fas fa-file-alt">
 				</span>
 					<p>Coaching Form</p>
 			</div>
-			
-			<div id="sidebar-menu">
+			<a th:href="@{/coach/profile}" id="sidebar-menu">
 				<span class="fa fa-user">
 				</span>
 					<p>Profile</p>
-			</div>	
+			</a>	
 			
-			<div id="sidebar-menu">
+			<div id="sidebar-menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				<span class="fas fa-cog">
 				</span>
 					<p>Logout</p>
@@ -55,6 +50,24 @@
 		</div>
 		
 		<main>
+			<!-- Logout Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body" style="color:black">
+					Are you sure you want to logout?
+					</div>
+					<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
+					<button type="button" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
+					</div>
+				</div>
+				</div>
+			</div>
 			<div class="dashboard-container" style="position: fixed">
 				<div class="box">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>

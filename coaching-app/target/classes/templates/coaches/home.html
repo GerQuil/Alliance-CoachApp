@@ -11,8 +11,8 @@
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
-	<!-- My CSS -->
+    <!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
+	--- My CSS ---- 
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 	<title> Coaching App</title>
@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	 -->
 </head>
 <body>
     <nav class="navbar">
@@ -43,7 +43,6 @@
                 </span>
                     <p>Home</p>
             </div>
-            
             <a th:href="@{/coach/coach-form}" id="sidebar-menu">
                 <span class="fas fa-file-alt">
                 </span>
@@ -55,8 +54,7 @@
                     <p>Profile</p>
             </a>
             
-            
-            <div id="sidebar-menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <div id="sidebar-menu" data-bs-toggle="modal" href="#logoutModal">
                 <span class="fas fa-cog">
                 </span>
                     <p>Logout</p>
@@ -64,27 +62,30 @@
         </div>
         
         <main>
-            <div class="dashboard-container">
+            <!-- Logout Modal -->
+            <div class="modal fade" id="logoutModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- <form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+                        <input hidden th:field="*{id}" type="text"> -->
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="color:black">
+                        Are you sure you want to logout?
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
+                        <button type="submit" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
+                        </div>
+                    <!-- </form> -->
+                </div>
+                </div>
+            </div>
+            <div class="dashboard-container" style="position: fixed">
                 <div class="box">
 				    <h4 id="title">COACHING FORM LIST</h4>
-                    <!-- Logout Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body" style="color:black">
-                            Are you sure you want to logout?
-                            </div>
-                            <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
-                            <button type="button" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
                     <form action="#" method="post" th:object="${coachForms}"> <!--no need to put a form-->
                         <a th:href='@{/coach/coach-forms}' id="add"><img th:src="@{/assets/addscope.svg}" alt="add-button"></a><br>
                         <table class="table">
