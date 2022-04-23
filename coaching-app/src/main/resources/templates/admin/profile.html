@@ -10,16 +10,24 @@
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 
 	<title> Coaching App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
+
 </head>
 
 <body>
 	<nav class="navbar">
-		<h4> Dashboard </h4>
+		<div class="dash">
+			<h4> Dashboard </h4>
+		</div>
+		
 		<div class="profile">
-			<span class="fas fa-search"></span>
 			<img class="profile-image" th:src="@{/assets/logo1.png}">
 			<p class="profile-name"> Admin Profile </p>
 		</div>
+		
 	</nav>
 
 		
@@ -44,8 +52,8 @@
 			<div class="sidebar-menu" id="none">
 				<span class="fas fa-cog">
 				</span>
-				<a th:href="@{/logout}"> <p>Logout</p></a>
-			</div>		
+				<a href="#logoutEmployeeModal" data-toggle="modal"> <p>Logout</p></a>
+			</div>
 		</div>
 		
 		<main>
@@ -92,6 +100,32 @@
 			
 			</div>
 		</main>
+			
+			<!-- Logout Modal HTML -->
+			<div id="logoutEmployeeModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+							<input hidden th:field="*{id}" type="text" id="delete_id">
+							<div class="icon-box" style="text-align:center;">
+								<i class="fa fa-cog"></i>	
+							</div>
+							<div class="modal-header">
+								<h4 class="modal-title">Logout USER</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<p>Are you sure you want to logout?</p>
+							</div>
+							<div class="modal-footer">
+								<input type="button" class="btn btn-default" data-dismiss="modal" value="No">
+								<input type="submit" class="btn btn-danger" value="Yes">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
 		
 </body>
 </html>

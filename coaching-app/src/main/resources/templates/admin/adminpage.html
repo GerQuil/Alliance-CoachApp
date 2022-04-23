@@ -81,8 +81,9 @@
 			<div class="sidebar-menu" id="none">
 				<span class="fas fa-cog">
 				</span>
-				<a th:href="@{/logout}"> <p>Logout</p></a>
-			</div>	
+				<a href="#logoutEmployeeModal" data-toggle="modal"> <p>Logout</p></a>
+			</div>
+			
 		</div>
 		
 		<main>
@@ -139,18 +140,6 @@
 			</tbody>
 			</table>
 			
-				<div class="clearfix">
-					<div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-						<ul class="pagination">
-						<li class="page-item disabled"><a href="#">Previous</a></li>
-						<li class="page-item active"><a href="#" class="page-link">1</a></li>
-						<li class="page-item"><a href="#" class="page-link">2</a></li>
-						<li class="page-item "><a href="#" class="page-link">3</a></li>
-						<li class="page-item"><a href="#" class="page-link">4</a></li>
-						<li class="page-item"><a href="#" class="page-link">5</a></li>
-						<li class="page-item"><a href="#" class="page-link">Next</a></li>
-						</ul>
-				</div>
 			</div>
 			</div>
 			</div>
@@ -271,7 +260,32 @@
 					</div>
 				</div>
 			</div>
-					
+			
+			<!-- Logout Modal HTML -->
+			<div id="logoutEmployeeModal" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+							<input hidden th:field="*{id}" type="text" id="delete_id">
+							<div class="icon-box">
+								<i class="fa fa-cog"></i>
+								
+							</div>
+							<div class="modal-header">
+								<h4 class="modal-title">Logout USER</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							</div>
+							<div class="modal-body">
+								<p>Are you sure you want to logout?</p>
+							</div>
+							<div class="modal-footer">
+								<input type="button" class="btn btn-default" data-dismiss="modal" value="No">
+								<input type="submit" class="btn btn-danger" value="Yes">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
 	</main>
 	
 </body>

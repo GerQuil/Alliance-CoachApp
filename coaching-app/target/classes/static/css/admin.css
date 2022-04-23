@@ -491,6 +491,7 @@ form{
 	background-color: #fff;
 	border-radius: 10px;
 }
+
 #none{
 	padding: 2px 25px;
 	border-radius: 10px;
@@ -517,6 +518,18 @@ form{
 #sidebar-menu-active > a{
 	color:#ff0000;
 }
+
+#none > p{
+	position: relative;
+	top: 10px;
+	
+}
+#none a:hover{
+	color: #ff0000;
+}
+
+#none> a{
+	color:#fff;
 
 input.invalid 
 {
