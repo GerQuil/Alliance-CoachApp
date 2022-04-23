@@ -66,8 +66,8 @@
             <div class="modal fade" id="logoutModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                 <div class="modal-content">
-                    <!-- <form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
-                        <input hidden th:field="*{id}" type="text"> -->
+                    <form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+                        <!-- <input hidden th:field="*{id}" type="text"> -->
                         <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -79,7 +79,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
                         <button type="submit" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
                         </div>
-                    <!-- </form> -->
+                    </form>
                 </div>
                 </div>
             </div>

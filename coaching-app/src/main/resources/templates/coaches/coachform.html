@@ -42,7 +42,7 @@
 					<p>Profile</p>
 			</a>	
 			
-			<div id="sidebar-menu" data-bs-toggle="modal" data-bs-target="#exampleModal">
+			<div id="sidebar-menu" data-bs-toggle="modal" href="#logoutModal">
 				<span class="fas fa-cog">
 				</span>
 					<p>Logout</p>
@@ -51,20 +51,22 @@
 		
 		<main>
 			<!-- Logout Modal -->
-			<div class="modal fade" id="exampleModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal fade" id="logoutModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 				<div class="modal-content">
-					<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-					</div>
-					<div class="modal-body" style="color:black">
-					Are you sure you want to logout?
-					</div>
-					<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
-					<button type="button" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
-					</div>
+					<form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+						<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body" style="color:black">
+						Are you sure you want to logout?
+						</div>
+						<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
+						<button type="submit" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
+						</div>
+					</form>
 				</div>
 				</div>
 			</div>
