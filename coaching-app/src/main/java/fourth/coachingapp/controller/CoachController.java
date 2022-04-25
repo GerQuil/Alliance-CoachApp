@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import fourth.coachingapp.entity.CoachForm;
+import fourth.coachingapp.entity.Progress;
 import fourth.coachingapp.entity.User;
 import fourth.coachingapp.service.CoachFormService;
+import fourth.coachingapp.service.ProgressService;
 import fourth.coachingapp.service.UserService;
 
 @Controller
@@ -29,6 +33,47 @@ public class CoachController
 
 	@Autowired
 	CoachFormService coachFormService;
+
+	@Autowired
+	ProgressService progressService;
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ##### RETURNS COACH PROFILE PAGE FORM ######
+	 * ############################################
+	 * ############################################
+	 */
+
+	@GetMapping("/profile")
+	public String adminProfile(
+			Model model,
+			Principal principal)
+	{
+		User user = userService.getUserByEmail(principal.getName());
+
+		model.addAttribute("user", user);
+		return ("/coaches/profile");
+	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ### RETURNS LIST OF USERS BASED ON SEARCH ##
+	 * ############################################
+	 * ############################################
+	 */
+
+	@GetMapping("/trainees")
+	@ResponseBody
+	public List<User> traineeList(
+			Model model,
+			@RequestParam(name = "value") String value)
+	{
+		List<User> users = userService.getUserBySearch(value, false);
+
+		return users;
+	}
 
 	/*
 	 * ############################################
@@ -55,9 +100,13 @@ public class CoachController
 	 */
 
 	@GetMapping("/coach-form")
-	public String form(Model model)
+	public String form(
+			Model model,
+			Principal principal)
 	{
+		User user = userService.getUserByEmail(principal.getName());
 		CoachForm coachForm = new CoachForm();
+		coachForm.setCoach(user);
 		model.addAttribute("coachform", coachForm);
 		return ("coaches/coachform");
 	}
@@ -91,7 +140,8 @@ public class CoachController
 	@PostMapping("/add/coach-form")
 	public String addCoachForm(
 			Model model,
-			@ModelAttribute CoachForm coachform)
+			@ModelAttribute CoachForm coachform,
+			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
 		log.info("posting");
 		coachFormService.addCoachForm(coachform);
@@ -110,7 +160,8 @@ public class CoachController
 	@PostMapping("/update/coach-form")
 	public String updateCoachForm(
 			Model model,
-			@ModelAttribute CoachForm coachform)
+			@ModelAttribute CoachForm coachform,
+			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
 		log.info("posting");
 		coachFormService.update(coachform);
@@ -121,20 +172,35 @@ public class CoachController
 	/*
 	 * ############################################
 	 * ############################################
-	 * ##### RETURNS COACH PROFILE PAGE FORM ######
+	 * ############# ADDING PROGRESS ##############
 	 * ############################################
 	 * ############################################
 	 */
 
-	@GetMapping("/profile")
-	public String adminProfile(
-			Model model,
-			Principal principal)
+	@PostMapping("/add/progress")
+	public String addProgress(
+			@ModelAttribute Progress progress,
+			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
-		User user = userService.getUserByEmail(principal.getName());
+		progressService.addProgress(progress, file);
+		return "";
+	}
 
-		model.addAttribute("user", user);
-		return ("/coaches/profile");
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# UPDATE PROGRESS ##############
+	 * ############################################
+	 * ############################################
+	 */
+
+	@PostMapping("/update/progress")
+	public String updateProgress(
+			@ModelAttribute Progress progress,
+			@RequestParam(name = "file", required = false) MultipartFile file)
+	{
+		progressService.updateProgress(progress, file);
+		return "";
 	}
 
 }

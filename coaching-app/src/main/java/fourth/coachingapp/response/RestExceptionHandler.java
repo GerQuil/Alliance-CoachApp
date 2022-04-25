@@ -27,6 +27,21 @@ public class RestExceptionHandler
 	}
 
 	@ExceptionHandler
+	public ResponseEntity<ErrorResponse> handleException(NotFoundException e)
+	{
+		ErrorResponse error = new ErrorResponse();
+
+		message = e.getMessage() + " FAILED!";
+
+		error.setStatus(HttpStatus.NOT_FOUND.value());
+		error.setMessage(message);
+		error.setTimeStamp(System.currentTimeMillis());
+
+		return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+
+	}
+
+	@ExceptionHandler
 	public ResponseEntity<ErrorResponse> handleException(Exception e)
 	{
 		ErrorResponse error = new ErrorResponse();

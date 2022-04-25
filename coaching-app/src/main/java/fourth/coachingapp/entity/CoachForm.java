@@ -1,5 +1,7 @@
 package fourth.coachingapp.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -61,10 +64,10 @@ public class CoachForm
 	@Column(name = "modified_date")
 	private String modifiedDate;
 
-	public CoachForm()
-	{
-
-	}
+	@OneToMany(fetch = FetchType.EAGER,
+			cascade = CascadeType.ALL,
+			mappedBy = "coachForm")
+	private List<Progress> progress;
 
 	public int getId()
 	{
@@ -176,13 +179,30 @@ public class CoachForm
 		this.modifiedDate = modifiedDate;
 	}
 
+	public List<Progress> getProgress()
+	{
+		return progress;
+	}
+
+	public void setProgress(List<Progress> progress)
+	{
+		this.progress = progress;
+	}
+
 	@Override
 	public String toString()
 	{
 		return "CoachForm [id=" + id + ", trainee=" + trainee + ", traineePosition=" + traineePosition + ", coach="
 				+ coach + ", coachingTopic=" + coachingTopic + ", desiredOutcome=" + desiredOutcome
 				+ ", benefitsOfChange=" + benefitsOfChange + ", actionPlan=" + actionPlan + ", timeline=" + timeline
-				+ ", creationDate=" + creationDate + ", modifiedDate=" + modifiedDate + "]";
+				+ ", creationDate=" + creationDate + ", modifiedDate=" + modifiedDate + ", progress=" + progress
+				+ ", getId()=" + getId() + ", getTrainee()=" + getTrainee() + ", getTraineePosition()="
+				+ getTraineePosition() + ", getCoach()=" + getCoach() + ", getCoachingTopic()=" + getCoachingTopic()
+				+ ", getDesiredOutcome()=" + getDesiredOutcome() + ", getBenefitsOfChange()=" + getBenefitsOfChange()
+				+ ", getActionPlan()=" + getActionPlan() + ", getTimeline()=" + getTimeline() + ", getCreationDate()="
+				+ getCreationDate() + ", getModifiedDate()=" + getModifiedDate() + ", getProgress()=" + getProgress()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
 	}
 
 }
