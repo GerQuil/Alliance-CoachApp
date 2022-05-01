@@ -12,6 +12,7 @@
 
 	<!-- js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script th:src="@{/js/suggestion.js}"></script>
 	<script th:src="@{/js/coachform.js}"></script>
 
 	<title>Coaching Form Page</title>
@@ -81,17 +82,28 @@
 					<br>
 					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<input type="text" th:field = "*{trainee.id}" class="input-field" hidden>
-						<input id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
+						<div class="wrapper">
+							<div class="inputs">
+								<input id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
+								<div class="autocom text-start">
+									<li>James Ruiz</li>
+									<li>Geremy Quillosa</li>
+									<li>Jill Allera</li>
+									<li>Carlsan Kim</li>
+									<li>Anees Son</li>
+								</div>
+							</div>
+						</div>
 						<!-- <ul class="trainee-list"></ul> -->
-						<input type="date" th:field = "*{creationDate}" class="input-field" readonly>
-						<select th:field = "*{traineePosition}" name="position" class="select">
+						<input type="datetime" id="date" th:field = "*{creationDate}" class="input-field" style="position: relative; float:right; width: 49%;" readonly>
+						<select th:field = "*{traineePosition}" name="position" class="select"  style="position: relative; top: 70px; float:left; width: 48%;">
 							<option value='Analyst'>Analyst</option>
 							<option value='Tester'>QA Tester</option>
 							<option value='FE Dev'>Front-End Developer</option>
 							<option value='BE Dev'>Back-End Developer</option>
 						</select>
 						<input type="text" th:field = "*{coach.id}" class="input-field" hidden>
-						<input type="text" th:field = "*{coach.firstName}" class="input-field" placeholder="Supervisor/ Manager" readonly>
+						<input type="text" th:field = "*{coach.firstName}" class="input-field" style="position: relative; left: 518px; width: 49%;" placeholder="Supervisor/ Manager" readonly>
 						<h6> Coaching Topic/ Area </h6>
 						<textarea th:field = "*{coachingTopic}" name="topic" class="topic"></textarea>
 						
