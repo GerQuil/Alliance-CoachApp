@@ -17,7 +17,9 @@ public class DocumentService
 
 	private String fs = FileSystems.getDefault().getSeparator();
 
-	private String filePath = fs + "evidence";
+	private final String filePath = fs + "evidence";
+
+	private final String format = ".pdf";
 
 	@Autowired
 	private LocalFileImpl localFile;
@@ -27,7 +29,7 @@ public class DocumentService
 		try
 		{
 
-			localFile.saveFile(file, filePath + fs + entity + fs + id);
+			localFile.saveFile(file, filePath + fs + entity + fs + id + format);
 		}
 		catch (Exception e)
 		{
@@ -39,7 +41,7 @@ public class DocumentService
 	{
 		try
 		{
-			return localFile.getFile(filePath + fs + entity + fs + id);
+			return localFile.getFile(filePath + fs + entity + fs + id + format);
 		}
 		catch (Exception e)
 		{
@@ -51,7 +53,7 @@ public class DocumentService
 	{
 		try
 		{
-			localFile.deleteFile(filePath + fs + entity + fs + id);
+			localFile.deleteFile(filePath + fs + entity + fs + id + format);
 
 		}
 		catch (Exception e)

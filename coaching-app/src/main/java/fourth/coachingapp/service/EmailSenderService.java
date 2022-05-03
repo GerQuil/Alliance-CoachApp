@@ -33,7 +33,7 @@ public class EmailSenderService
 			mimeMessageHelper.setSubject(subject);
 			mimeMessageHelper.setText(body);
 
-			FileSystemResource fileSystem = new FileSystemResource(new File(attachment));
+			FileSystemResource fileSystem = new FileSystemResource(new File(attachment + ".pdf"));
 			mimeMessageHelper.addAttachment(fileSystem.getFilename(), fileSystem);
 
 			mailSender.send(mimeMessage);
