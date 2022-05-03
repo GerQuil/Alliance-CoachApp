@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.FileSystems;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +16,8 @@ import fourth.coachingapp.response.FailedException;
 
 public class LocalFileImpl
 {
-	private final String basePath = "./src/main/resources/";
+	private final String basePath = FileSystems.getDefault()
+			.getPath(".", "src", "main", "resources").toString();
 
 	public void saveFile(MultipartFile file, String filePath)
 	{

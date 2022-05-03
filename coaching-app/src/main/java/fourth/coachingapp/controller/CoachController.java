@@ -1,14 +1,17 @@
 package fourth.coachingapp.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +22,7 @@ import fourth.coachingapp.entity.CoachForm;
 import fourth.coachingapp.entity.Progress;
 import fourth.coachingapp.entity.User;
 import fourth.coachingapp.service.CoachFormService;
+import fourth.coachingapp.service.DocumentService;
 import fourth.coachingapp.service.ProgressService;
 import fourth.coachingapp.service.UserService;
 
@@ -36,6 +40,9 @@ public class CoachController
 
 	@Autowired
 	ProgressService progressService;
+
+	@Autowired
+	DocumentService documentService;
 
 	/*
 	 * ############################################
@@ -67,10 +74,11 @@ public class CoachController
 	@GetMapping("/trainees")
 	@ResponseBody
 	public List<User> traineeList(
+			Principal principal,
 			Model model,
 			@RequestParam(name = "value") String value)
 	{
-		List<User> users = userService.getUserBySearch(value, false);
+		List<User> users = userService.getUserBySearch(value, false, principal.getName());
 
 		return users;
 	}
@@ -120,13 +128,23 @@ public class CoachController
 	 */
 
 	@GetMapping("/view/coach-form")
-	public String forms(
+	public String getCoachFormView(
 			Model model,
 			@RequestParam(value = "id") int id)
 	{
 		CoachForm coachForm = coachFormService.getCoachFormById(id);
 		model.addAttribute("coachform", coachForm);
 		return ("coaches/coachform");
+	}
+
+	@GetMapping("/update/coach-form")
+	public String getCoachformUpdate(
+			Model model,
+			@RequestParam(value = "id") int id)
+	{
+		CoachForm coachForm = coachFormService.getCoachFormById(id);
+		model.addAttribute("coachform", coachForm);
+		return ("coaches/updateforms");
 	}
 
 	/*
@@ -140,13 +158,13 @@ public class CoachController
 	@PostMapping("/add/coach-form")
 	public String addCoachForm(
 			Model model,
-			@ModelAttribute CoachForm coachform,
+			@ModelAttribute CoachForm coachForm,
 			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
-		log.info("posting");
-		coachFormService.addCoachForm(coachform);
 
-		return "redirect:/coaches/coachform";
+		coachFormService.addCoachForm(coachForm, file);
+
+		return "redirect:/coach/coach-forms";
 	}
 
 	/*
@@ -164,9 +182,16 @@ public class CoachController
 			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
 		log.info("posting");
-		coachFormService.update(coachform);
+		if(file == null)
+		{
+			coachFormService.update(coachform);
+		}
+		else
+		{
+			coachFormService.update(coachform, file);
+		}
 
-		return "redirect:/coaches/coachform";
+		return "redirect:/coach/coachforms";
 	}
 
 	/*
@@ -201,6 +226,24 @@ public class CoachController
 	{
 		progressService.updateProgress(progress, file);
 		return "";
+	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# GET DOCUMENTS ################
+	 * ############################################
+	 * ############################################
+	 */
+
+	@GetMapping(value = "/documents/{entity}/{id}",
+			produces = MediaType.APPLICATION_PDF_VALUE)
+	public @ResponseBody byte [] pdf(
+			@PathVariable(name = "entity") String entity,
+			@PathVariable(name = "id") int id) throws IOException
+	{
+		return documentService.getDocument(entity, id);
+
 	}
 
 }

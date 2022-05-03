@@ -14,9 +14,12 @@ public interface UserRepository extends JpaRepository<User, Integer>
 
 	public User findByEmail(String email);
 
-	@Query("SELECT u FROM User u WHERE (LOWER(u.firstName) LIKE LOWER(:name)"
-			+ " OR LOWER(u.lastName) LIKE LOWER(:name)"
-			+ " OR u.email LIKE :name)"
-			+ " AND u.disabled = :disabled")
-	public List<User> findBySearch(@Param("name") String name, boolean disabled);
+	@Query("SELECT u FROM User u WHERE "
+			+ "concat(u.firstName, ' ',u.lastName) LIKE :name"
+			+ " AND u.disabled = :disabled"
+			+ " AND u.email != :email")
+	public List<User> findBySearch(
+			@Param("name") String name,
+			boolean disabled,
+			@Param("email") String email);
 }
