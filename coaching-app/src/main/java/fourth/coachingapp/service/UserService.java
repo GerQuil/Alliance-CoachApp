@@ -31,10 +31,10 @@ public class UserService
 		return userRepository.findByRole(role);
 	}
 
-	public List<User> getUserBySearch(String search, boolean disabled)
+	public List<User> getUserBySearch(String search, boolean disabled, String email)
 	{
-		search = "%" + search + "%";
-		return userRepository.findBySearch(search, disabled);
+		search = search + "%";
+		return userRepository.findBySearch(search, disabled, email);
 	}
 
 	public User getUserById(int id)

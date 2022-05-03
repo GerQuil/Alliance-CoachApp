@@ -36,11 +36,12 @@ public class AdminController
 
 	@GetMapping("/admin-page")
 	public String admins(
+			Principal principal,
 			Model model,
 			@RequestParam(value = "search", defaultValue = "") String search,
 			@RequestParam(value = "disabled", defaultValue = "false") boolean disabled)
 	{
-		List<User> users = userService.getUserBySearch(search, disabled);
+		List<User> users = userService.getUserBySearch(search, disabled, principal.getName());
 
 		model.addAttribute("search", search);
 		model.addAttribute("disabled", disabled);

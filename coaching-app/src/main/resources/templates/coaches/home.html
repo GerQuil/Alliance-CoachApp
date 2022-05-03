@@ -100,14 +100,13 @@
                             </thead>
                             <tbody>
                             <tr th:each="coachForm:${coachForms}">
-
-                                <td th:text="${coachForm.trainee.firstname} +' '+ ${coachForm.trainee.lastName}"></td>
+                                <td th:text="${coachForm.trainee.firstName} +' '+ ${coachForm.trainee.lastName}"></td>
                                 <td th:text="${coachForm.traineePosition}"></td>
                                 <td th:text="${coachForm.creationDate}"></td>
-                                <td th:text="${coachForm.coach.firstname} +' '+ ${coachForm.coach.lastName}"></td>
+                                <td th:text="${coachForm.coach.firstName} +' '+ ${coachForm.coach.lastName}"></td>
 
-                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view-form?id=}+coachForm.id">View</a></button>
-                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update-form?id=}+coachForm.id">Update</a></button>
+                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view/coach-form?id=}+${coachForm.id}">View</a></button>
+                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update/coach-form?id=}+${coachForm.id}">Update</a></button>
                                 </td>
                             </tr>
                             </tbody>

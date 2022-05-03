@@ -1,9 +1,17 @@
 package fourth.coachingapp.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
+import java.io.File;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+@Service
 public class EmailSenderService
 {
 	@Autowired
@@ -12,15 +20,30 @@ public class EmailSenderService
 	public void sendEmail(
 			String toEmail,
 			String subject,
-			String body)
+			String body,
+			String attachment)
 	{
-		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("${spring.mail.username}");
-		message.setTo(toEmail);
-		message.setSubject(subject);
-		message.setText(body);
+		MimeMessage mimeMessage = mailSender.createMimeMessage();
 
-		mailSender.send(message);
-		System.out.println("Message Sent Successfully");
+		try
+		{
+			MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+			mimeMessageHelper.setFrom("${spring.mail.username}");
+			mimeMessageHelper.setTo(new String [] { toEmail, "jillallera@gmail.com" });
+			mimeMessageHelper.setSubject(subject);
+			mimeMessageHelper.setText(body);
+
+			FileSystemResource fileSystem = new FileSystemResource(new File(attachment));
+			mimeMessageHelper.addAttachment(fileSystem.getFilename(), fileSystem);
+
+			mailSender.send(mimeMessage);
+			System.out.println("Message Sent Successfully");
+		}
+		catch (MessagingException e)
+		{
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+
 	}
 }

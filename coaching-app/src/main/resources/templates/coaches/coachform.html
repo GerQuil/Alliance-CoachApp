@@ -81,16 +81,11 @@
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
 					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
-						<input type="text" th:field = "*{trainee.id}" class="input-field" hidden>
+						<input id="trainee-email" th:field = "*{trainee.email}" class="input-field" hidden>
 						<div class="wrapper">
 							<div class="inputs">
-								<input id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
-								<div class="autocom text-start">
-									<li>James Ruiz</li>
-									<li>Geremy Quillosa</li>
-									<li>Jill Allera</li>
-									<li>Carlsan Kim</li>
-									<li>Anees Son</li>
+								<input th:value="${coachform.trainee.firstName != null}? ${coachform.trainee.firstName}+' '+${coachform.trainee.lastName}: ''" id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
+								<div class="autocom text-start">	
 								</div>
 							</div>
 						</div>
@@ -102,7 +97,7 @@
 							<option value='FE Dev'>Front-End Developer</option>
 							<option value='BE Dev'>Back-End Developer</option>
 						</select>
-						<input type="text" th:field = "*{coach.id}" class="input-field" hidden>
+						<input th:field = "*{coach.email}" class="input-field" hidden>
 						<input type="text" th:field = "*{coach.firstName}" class="input-field" style="position: relative; left: 518px; width: 49%;" placeholder="Supervisor/ Manager" readonly>
 						<h6> Coaching Topic/ Area </h6>
 						<textarea th:field = "*{coachingTopic}" name="topic" class="topic"></textarea>
