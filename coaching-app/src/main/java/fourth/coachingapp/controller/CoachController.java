@@ -134,7 +134,7 @@ public class CoachController
 	{
 		CoachForm coachForm = coachFormService.getCoachFormById(id);
 		model.addAttribute("coachform", coachForm);
-		return ("coaches/coachform");
+		return ("coaches/viewform");
 	}
 
 	@GetMapping("/update/coach-form")
