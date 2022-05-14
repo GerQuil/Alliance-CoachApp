@@ -30,6 +30,9 @@ public class Progress
 	@JoinColumn(name = "coachform_id", updatable = false)
 	private CoachForm coachForm;
 
+	@Column(name = "action_plan")
+	private String actionPlan;
+
 	@Column(name = "progress")
 	private String progress;
 
@@ -57,6 +60,16 @@ public class Progress
 	public void setCoachForm(CoachForm coachForm)
 	{
 		this.coachForm = coachForm;
+	}
+
+	public String getActionPlan()
+	{
+		return actionPlan;
+	}
+
+	public void setActionPlan(String actionPlan)
+	{
+		this.actionPlan = actionPlan;
 	}
 
 	public String getProgress()

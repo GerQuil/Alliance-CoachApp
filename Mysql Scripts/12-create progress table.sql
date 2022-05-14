@@ -5,6 +5,7 @@ CREATE TABLE progress
 (
 	id int not null auto_increment,
     coachform_id int not null,
+    action_plan varchar(1000),
     progress varchar(1000) not null,
     
 	`creation_date` datetime default current_timestamp,

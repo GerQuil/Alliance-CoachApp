@@ -92,9 +92,11 @@ public class CoachController
 	 */
 
 	@GetMapping("/coach-forms")
-	public String forms(Model model)
+	public String forms(
+			Model model,
+			Principal principal)
 	{
-		List<CoachForm> coachForms = coachFormService.getCoachForms();
+		List<CoachForm> coachForms = coachFormService.getCoachFormsByCoach(principal.getName());
 		model.addAttribute("coachForms", coachForms);
 		return ("coaches/home");
 	}
@@ -146,17 +148,6 @@ public class CoachController
 		model.addAttribute("coachform", coachForm);
 		return ("coaches/updateforms");
 	}
-	///I added this one
-	@GetMapping("/add/progress/coach-form")
-	public String getCoachformProgress(
-			Model model,
-			@RequestParam(value = "id") int id)
-	{
-		CoachForm coachForm = coachFormService.getCoachFormById(id);
-		model.addAttribute("coachform", coachForm);
-		return ("coaches/updateprogress");
-	}
-
 
 	/*
 	 * ############################################
@@ -193,35 +184,30 @@ public class CoachController
 			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
 		log.info("posting");
-		if(file == null)
-		{
-			coachFormService.update(coachform);
-		}
-		else
-		{
-			coachFormService.update(coachform, file);
-		}
 
-		return "redirect:/coach/coachforms";
+		coachFormService.update(coachform);
+
+		return "redirect:/coach/coach-forms";
 	}
-	// I added this
-	@PostMapping("/updateprog/coach-form")
-	public String updateProgressCoachForm(
-			Model model,
-			@ModelAttribute CoachForm coachform,
-			@RequestParam(name = "file", required = false) MultipartFile file)
-	{
-		log.info("posting");
-		if(file == null)
-		{
-			coachFormService.update(coachform);
-		}
-		else
-		{
-			coachFormService.update(coachform, file);
-		}
 
-		return "redirect:/coach/coachforms";
+	/*
+	 * ############################################
+	 * ############################################
+	 * ############# PROGRESS ADD PAGE ############
+	 * ############################################
+	 * ############################################
+	 */
+	@GetMapping("/add/progress")
+	public String getCoachformProgress(
+			Model model,
+			@RequestParam(value = "id") int id)
+	{
+		CoachForm coachForm = coachFormService.getCoachFormById(id);
+		Progress progress = new Progress();
+		model.addAttribute("coachform", coachForm);
+		model.addAttribute("progress", progress);
+
+		return ("coaches/updateprogress");
 	}
 
 	/*

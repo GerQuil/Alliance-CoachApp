@@ -80,6 +80,7 @@
 					<a th:href="@{/coach/coach-forms}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Forms page</p></a>
 					<form th:action="@{/coach/update/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
+						<input type="hidden" th:field ="*{id}">
 						<textarea th:field = "*{actionPlan}" name="action" id="actionPlan" class="topic" readonly></textarea>
 				
 						<!-- <input type="text" name="addaction" class="topic" id="addaction" placeholder="Type the update here....." style="display:none; visibility:hidden;" /> -->
@@ -92,7 +93,7 @@
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
 						</div>
 						<div class="text-center" style="position: relative; margin: auto; top: 80px;">
-							<a th:href="@{/coach/updateprogress/coach-form}" id ="arrow-right"><span class="fa fa-arrow-right"></span> PROCEED TO PROGRESS PAGE</a>
+							<a th:href="@{/coach/add/progress?id=} + ${coachform.id}" id ="arrow-right"><span class="fa fa-arrow-right"></span> PROCEED TO PROGRESS PAGE</a>
 							<!-- th:href="@{/coach/updateprogress/coach-form?id=}+${coachForm.id}" -->
 						</div>
 					</form>

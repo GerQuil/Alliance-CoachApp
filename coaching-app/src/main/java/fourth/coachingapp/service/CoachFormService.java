@@ -10,12 +10,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import fourth.coachingapp.dao.CoachFormRepository;
 import fourth.coachingapp.entity.CoachForm;
+import fourth.coachingapp.entity.User;
 import fourth.coachingapp.response.EmailTemplate;
 import fourth.coachingapp.security.BcryptSecurity;
-import lombok.extern.slf4j.Slf4j;
 
 @Service
-@Slf4j
 public class CoachFormService
 {
 	@Autowired
@@ -36,6 +35,12 @@ public class CoachFormService
 	public List<CoachForm> getCoachForms()
 	{
 		return coachFormRepsository.findAll();
+	}
+
+	public List<CoachForm> getCoachFormsByCoach(String email)
+	{
+		User user = userService.getUserByEmail(email);
+		return coachFormRepsository.findCoachFormByCoachOrderByIdDesc(user);
 	}
 
 	public CoachForm getCoachFormById(int id)
@@ -77,7 +82,9 @@ public class CoachFormService
 
 	public void update(CoachForm coachForm)
 	{
-		coachFormRepsository.save(coachForm);
+		CoachForm dbform = getCoachFormById(coachForm.getId());
+		dbform.setActionPlan(coachForm.getActionPlan());
+		coachFormRepsository.save(dbform);
 	}
 
 	public void update(CoachForm coachForm, MultipartFile file)

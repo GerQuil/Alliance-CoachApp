@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -28,7 +28,7 @@ public class CoachForm
 	@Column(name = "id", updatable = false)
 	private int id;
 
-	@OneToOne(
+	@ManyToOne(
 			fetch = FetchType.EAGER,
 			cascade = { CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "trainee", updatable = false)
@@ -37,7 +37,7 @@ public class CoachForm
 	@Column(name = "trainee_position")
 	private String traineePosition;
 
-	@OneToOne(
+	@ManyToOne(
 			fetch = FetchType.EAGER,
 			cascade = { CascadeType.REFRESH, CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinColumn(name = "coach", updatable = false)

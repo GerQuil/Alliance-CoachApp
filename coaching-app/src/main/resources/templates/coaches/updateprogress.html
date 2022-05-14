@@ -78,12 +78,12 @@
 					<!-- <a th:href="@{/coach/updateprogress/coach-form?id=}+${coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a> -->
 					<h4 id="title">ADD PROGRESS FORM</h4>
 					<br>
-					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${progress}" enctype="multipart/form-data">
 						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
-						<textarea th:field = "*{actionPlan}" name="action" class="topic" readonly></textarea><br>
+						<!-- <textarea th:field = "*{actionPlan}" name="action" class="topic" readonly></textarea><br> -->
 						
-						<!-- <h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
-						<textarea th:field = "*{empProgress}" name="topic" class="topic" readonly></textarea><br>
+						<h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
+						<textarea th:field = "*{progress}" name="topic" class="topic" readonly></textarea><br>
 						
 						<button id="progbutton" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
 						</span>ADD PROGRESS</button>
@@ -92,7 +92,7 @@
 						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
 							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
-						</div> -->
+						</div>
 
 						<button id="subbutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 						<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button><br>
