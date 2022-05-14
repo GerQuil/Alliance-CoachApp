@@ -400,6 +400,7 @@ textarea{
 	color: #ff0000;
 	background-color: #fff;
 	border-radius: 8px;
+	text-decoration: none;
 }
 #toggle:checked ~ #sidebar{
 	width: 70px;
@@ -545,5 +546,57 @@ form .button1 input{
 	list-style: none;
 	padding: 0px 12px;
 	display: none;
+}
+#arrow-right{
+	/* top:500px; */
+	position: relative;
+	background: lightgray;
+	color: black;
+	padding: 5px;
+	text-decoration: none;
+	border-radius: 10px;
+	margin: auto;
+}
+#arrow-right:hover{
+	/* top:500px; */
+	position: relative;
+	background: black;
+	color: white;
+	padding: 5px;
+	text-decoration: none;
+	border-radius: 10px;
+	margin: auto;
+}
+#actbutton{
+	padding: 5px;
+	border-radius: 10px;
+	border: none;
+	background: white;
+}
+#addaction{
+	padding: 5px;
+	height: 50px;
+	border-radius: 10px;
+	background: white;
+}
+#probutton{
+	width: 20%;
+	padding: 10px;
+	margin: auto;
+	border-radius: 10px;
+	color: white;
+	background: green;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	border: none;
+}
+#canbutton{
+	width: 20%;
+	padding: 10px;
+	margin: auto;
+	border-radius: 10px;
+	color: white;
+	background: #ff0000;
+	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	border: none;
 }
 

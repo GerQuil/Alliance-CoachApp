@@ -146,6 +146,17 @@ public class CoachController
 		model.addAttribute("coachform", coachForm);
 		return ("coaches/updateforms");
 	}
+	///I added this one
+	@GetMapping("/add/progress/coach-form")
+	public String getCoachformProgress(
+			Model model,
+			@RequestParam(value = "id") int id)
+	{
+		CoachForm coachForm = coachFormService.getCoachFormById(id);
+		model.addAttribute("coachform", coachForm);
+		return ("coaches/updateprogress");
+	}
+
 
 	/*
 	 * ############################################
@@ -177,6 +188,25 @@ public class CoachController
 
 	@PostMapping("/update/coach-form")
 	public String updateCoachForm(
+			Model model,
+			@ModelAttribute CoachForm coachform,
+			@RequestParam(name = "file", required = false) MultipartFile file)
+	{
+		log.info("posting");
+		if(file == null)
+		{
+			coachFormService.update(coachform);
+		}
+		else
+		{
+			coachFormService.update(coachform, file);
+		}
+
+		return "redirect:/coach/coachforms";
+	}
+	// I added this
+	@PostMapping("/updateprog/coach-form")
+	public String updateProgressCoachForm(
 			Model model,
 			@ModelAttribute CoachForm coachform,
 			@RequestParam(name = "file", required = false) MultipartFile file)
