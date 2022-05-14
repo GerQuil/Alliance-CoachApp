@@ -204,10 +204,11 @@ public class CoachController
 	{
 		CoachForm coachForm = coachFormService.getCoachFormById(id);
 		Progress progress = new Progress();
-		model.addAttribute("coachform", coachForm);
+		progress.setCoachForm(coachForm);
+		progress.setActionPlan(coachForm.getActionPlan());
 		model.addAttribute("progress", progress);
 
-		return ("coaches/updateprogress");
+		return ("coaches/addprogress");
 	}
 
 	/*

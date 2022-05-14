@@ -79,19 +79,20 @@
 					<h4 id="title">ADD PROGRESS FORM</h4>
 					<br>
 					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${progress}" enctype="multipart/form-data">
+						<input type="hidden" th:field="*{coachForm.id}">
 						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
-						<!-- <textarea th:field = "*{actionPlan}" name="action" class="topic" readonly></textarea><br> -->
+						<textarea th:field = "*{actionPlan}" name="action" class="topic" readonly></textarea><br>
 						
-						<h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
-						<textarea th:field = "*{progress}" name="topic" class="topic" readonly></textarea><br>
+						<!-- <h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
+						<textarea th:field = "*{progress}" name="topic" class="topic" readonly></textarea><br> -->
 						
 						<button id="progbutton" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
 						</span>ADD PROGRESS</button>
-						<input th:field = "*{traineeProgress}" type="text" name="addprogress" class="topic" id="addprogress" style="display:none; visibility:hidden;" />
+						<input th:field = "*{progress}" type="text" name="addprogress" class="topic" id="addprogress" style="display:none; visibility:hidden;" />
 
 						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
-							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
+							<input type="file"  name="file" class="topic2"/><br>
 						</div>
 
 						<button id="subbutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
