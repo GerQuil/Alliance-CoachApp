@@ -16,12 +16,10 @@
 	<nav class="navbar">
 		<h4 id="dashboard"> Dashboard </h4>
 		<div class="profile">
-			 <img class="profile-image" th:src="@{assets/logo1.png}">
+			 <img class="profile-image" th:src="@{/assets/logo1.png}">
 			<p id="profile-name"> Coach Profile </p>
 		</div>
 	</nav>
-
-		
 		<input type="checkbox" id="toggle">
 		<label id="side-toggle" for="toggle">
 			<span class="fas fa-bars"></span>
@@ -29,25 +27,25 @@
 		
 		<div id="sidebar">
 			
-			<a th:href="@{/home}" id="sidebar-menu">
+			<a th:href="@{/coach/coach-forms}" id="sidebar-menu-active">
 				<span class="fa fa-home">
 				</span>
 					<p>Home</p>
 			</a>
 			
-			<div id="sidebar-menu-active">
+			<a th:href="@{/coach/coach-form}" id="sidebar-menu">
 				<span class="fas fa-file-alt">
 				</span>
 					<p>Coaching Form</p>
-			</div>
+			</a>
 			
-			<div id="sidebar-menu">
+			<a th:href="@{/coach/profile}" id="sidebar-menu">
 				<span class="fa fa-user">
 				</span>
 					<p>Profile</p>
-			</div>	
+			</a>	
 			
-			<div id="sidebar-menu">
+			<div id="sidebar-menu" data-bs-toggle="modal" href="#logoutModal">
 				<span class="fas fa-cog">
 				</span>
 					<p>Logout</p>
@@ -55,16 +53,36 @@
 		</div>
 		
 		<main>
-			<div class="dashboard-container">
+			<!-- Logout Modal -->
+            <div class="modal fade" id="logoutModal" tabindex="0" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <form th:action="@{/logout}" method="post" th:object="${user}" enctype="multipart/form-data">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color:black">Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" style="color:black">
+                        Are you sure you want to logout?
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="color: white; background: rgb(201, 48, 48); border-style: none">No</button>
+                        <button type="submit" class="btn btn-primary" style="color: white; background: rgb(72, 204, 72); border-style: none">Yes, I do</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+			<div class="dashboard-container" style="position: fixed">
 				<div class="box">
-					<a th:href="@{/home}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
+					<!-- <a th:href="@{/coach/updateprogress/coach-form?id=}+${coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a> -->
 					<h4 id="title">ADD PROGRESS FORM</h4>
 					<br>
-					<form th:action="@{/coach-form/update}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
-						<textarea th:field = "*{coachAction}" name="action" class="topic" readonly></textarea><br>
+						<textarea th:field = "*{actionPlan}" name="action" class="topic" readonly></textarea><br>
 						
-						<h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
+						<!-- <h6>Progress Report <span class="description"><em>(What actions should be taken to achieve these goals?)</em></span></h6>
 						<textarea th:field = "*{empProgress}" name="topic" class="topic" readonly></textarea><br>
 						
 						<button id="progbutton" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
@@ -74,7 +92,7 @@
 						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 						<div class="text-center" id="topic">
 							<input type="file" th:field = "*{coachEvidence}" name="file" class="topic2"/><br>
-						</div>
+						</div> -->
 
 						<button id="subbutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 						<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button><br>
@@ -83,7 +101,7 @@
 			</div>
 		</main>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-	<script>
+	<!-- <script>
 		function showInput(){
 			document.getElementById("addprogress").style.display = "block";
 			document.getElementById("addprogress").style.visibility = "visible";
@@ -104,6 +122,6 @@
 			document.getElementById("progbutton").style.display = "block";
 			document.getElementById("progbutton").style.visibility = "visible";
 		}
-	</script>
+	</script> -->
 </body>
 </html>
