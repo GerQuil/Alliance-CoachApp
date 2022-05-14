@@ -82,8 +82,6 @@
 						<h6> Action Plan <span class="description"><em>(What actions should be taken to achieve the goals?)</em></span></h6>
 						<input type="hidden" th:field ="*{id}">
 						<textarea th:field = "*{actionPlan}" name="action" id="actionPlan" class="topic" readonly></textarea>
-				
-						<!-- <input type="text" name="addaction" class="topic" id="addaction" placeholder="Type the update here....." style="display:none; visibility:hidden;" /> -->
 						<div class="text-start">
 							<button id="actbutton" class="text-left" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
 							</span> ADD ACTION PLAN</button>
@@ -91,10 +89,39 @@
 						<div class="d-flex justify-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
 							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
-						</div>
+						</div><br><br>
+						<table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col">Progress Report</th>
+                                <th class="col">Date Created</th>
+                                <th class="col">Date Modified</th>
+                                <th class="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+								<tr>
+									<td>Efficency raised 75%</td>
+									<td>14/05/2022 11:03:20</td>
+									<td>14/05/2022 11:03:50</td>
+									<td>
+										<button type="button" id="view"><a id="viewtext"><span class="fa fa-pencil"></span></a></button>
+									</td>
+								</tr>
+                            <!-- <tr th:each="coachForm:${coachForms}">
+                                <td th:text="${coachForm.trainee.firstName} +' '+ ${coachForm.trainee.lastName}"></td>
+                                <td th:text="${coachForm.traineePosition}"></td>
+                                <td th:text="${coachForm.creationDate}"></td>
+                                <td th:text="${coachForm.coach.firstName} +' '+ ${coachForm.coach.lastName}"></td>
+
+                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view/coach-form?id=}+${coachForm.id}">View</a></button>
+                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update/coach-form?id=}+${coachForm.id}">Update</a></button>
+                                </td>
+                            </tr> -->
+                            </tbody>
+                        </table>
 						<div class="text-center" style="position: relative; margin: auto; top: 80px;">
 							<a th:href="@{/coach/add/progress?id=} + ${coachform.id}" id ="arrow-right"><span class="fa fa-arrow-right"></span> PROCEED TO PROGRESS PAGE</a>
-							<!-- th:href="@{/coach/updateprogress/coach-form?id=}+${coachForm.id}" -->
 						</div>
 					</form>
 				</div>
@@ -118,6 +145,7 @@
 			document.getElementById("canbutton").style.visibility = "hidden";
 			document.getElementById("actbutton").style.display = "block";
 			document.getElementById("actbutton").style.visibility = "visible";
+			document.getElementById("actionPlan").readOnly = true;
 		}
 	</script>
 </body>
