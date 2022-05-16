@@ -114,10 +114,45 @@
 						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
 						<textarea th:field = "*{timeline}" name="timeline" class="topic" readonly></textarea>
 
-						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
-						<div class="text-center" id="topic">
-							<a th:href="@{/coach/documents/coachform/}+${coachform.id}" target="_blank" class="topic2">View Evidence</a>
+						<div class="text-center">
+							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
+							<div class="topic" style="position: relative; margin: auto;">
+								<a th:href="@{/coach/documents/coachform/}+${coachform.id}" target="_blank" class="topic2">View Evidence</a>
+							</div>
+						</div><br><br>
+						<div class="text-center" style="background: grey;">
+							<p>Progress Table</p>
 						</div>
+						<table class="table">
+                            <thead>
+                            <tr>
+                                <th class="col">Progress Report</th>
+                                <th class="col">Date Created</th>
+                                <th class="col">Date Modified</th>
+                                <th class="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+								<tr>
+									<td>Efficency raised 75%</td>
+									<td>14/05/2022 11:03:20</td>
+									<td>14/05/2022 11:03:50</td>
+									<td>
+										<button type="button" id="view"><a id="viewtext"><span class="fa fa-eye"></span></a></button>
+									</td>
+								</tr>
+                            <!-- <tr th:each="coachForm:${coachForms}">
+                                <td th:text="${coachForm.trainee.firstName} +' '+ ${coachForm.trainee.lastName}"></td>
+                                <td th:text="${coachForm.traineePosition}"></td>
+                                <td th:text="${coachForm.creationDate}"></td>
+                                <td th:text="${coachForm.coach.firstName} +' '+ ${coachForm.coach.lastName}"></td>
+
+                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view/coach-form?id=}+${coachForm.id}">View</a></button>
+                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update/coach-form?id=}+${coachForm.id}">Update</a></button>
+                                </td>
+                            </tr> -->
+                            </tbody>
+                        </table>
 						
 						<a th:href="@{/coach/coach-forms}" id="subbutton" style="position:relative; text-decoration: none; top:20px;"><span class="fa fa-arrow-circle-left"></span> Back to Main Page</a>
 					</form>

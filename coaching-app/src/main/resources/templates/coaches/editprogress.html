@@ -9,7 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<title> Add Progress Page</title>
+	<title> Edit Progress Page</title>
 </head>
 
 <body>
@@ -76,7 +76,7 @@
 			<div class="dashboard-container" style="position: fixed">
 				<div class="box">
 					<a th:href="@{/coach/update/coach-form?id=}+${progress.coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
-					<h4 id="title">ADD PROGRESS FORM</h4>
+					<h4 id="title">EDIT PROGRESS FORM</h4>
 					<br>
 					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${progress}" enctype="multipart/form-data">
 						<input type="hidden" th:field="*{coachForm.id}">

@@ -114,9 +114,11 @@
 						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
 						<textarea th:field = "*{timeline}" name="timeline" class="topic"></textarea>
 
-						<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
-						<div class="text-center" id="topic">
-							<input type="file" name="file" class="topic2"/><br>
+						<div class="text-center" style="position: relative; margin: auto;">
+							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
+							<div class="topic" style="position: relative; margin: auto;">
+								<input type="file" name="file" class="topic2"/><br>
+							</div>
 						</div>
 						
 						<button id="subbutton" type="submit" name="submit">SUBMIT</button>
