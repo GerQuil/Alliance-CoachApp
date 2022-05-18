@@ -84,28 +84,34 @@
 						<textarea th:field = "*{actionPlan}" name="action" id="actionPlan" class="topic" readonly></textarea>
 						<div class="text-start">
 							<button id="actbutton" class="text-left" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
-							</span> ADD ACTION PLAN</button>
+							</span> UPDATE ACTION PLAN</button>
 						</div>
-						<div class="d-flex justify-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
-							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
+						<div class="d-flex justifsy-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
+							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 						</div><br><br>
 						<table class="table">
                             <thead>
-                            <tr>
-                                <th class="col">Progress Report</th>
-                                <th class="col">Date Created</th>
-                                <th class="col">Date Modified</th>
-                                <th class="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
 								<tr>
-									<td>Efficency raised 75%</td>
-									<td>14/05/2022 11:03:20</td>
-									<td>14/05/2022 11:03:50</td>
+									<th class="col">Action Plan</th>
+									<th class="col">Progress Report</th>
+									<th class="col">Date Created</th>
+									<th class="col">Evidence</th>
+									<th class="col">Action</th>
+								</tr>
+								</thead>
+								<tbody>
+									
+								<tr th:each="progress:${coachform.progress}">
+									<td th:text="${progress.actionPlan}"></td>
+									<td th:text="${progress.progressUpdate}"></td>
+									<td th:text="${progress.creationDate}"></td>
 									<td>
-										<button type="button" id="update"><a id="updatetext"><span class="fa fa-pencil"></span></a></button>
+										<button type="button" id="view"><a id="viewtext" target="_blank" th:href="@{/coach/documents/progress/}+${progress.id}">View</a></button>
+									</td>
+									<td>
+										<button type="button" id="update"><a th:href="@{/coach/update/progress/?id=}+${progress.id}"  id="updatetext"><span class="fa fa-pencil"></span></a></button>
+										
 									</td>
 								</tr>
                             <!-- <tr th:each="coachForm:${coachForms}">

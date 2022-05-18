@@ -126,31 +126,22 @@
 						<table class="table">
                             <thead>
                             <tr>
+								<th class="col">Action Plan</th>
                                 <th class="col">Progress Report</th>
                                 <th class="col">Date Created</th>
-                                <th class="col">Date Modified</th>
-                                <th class="col">Action</th>
+                                <th class="col">Evidence</th>
                             </tr>
                             </thead>
                             <tbody>
-								<tr>
-									<td>Efficency raised 75%</td>
-									<td>14/05/2022 11:03:20</td>
-									<td>14/05/2022 11:03:50</td>
-									<td>
-										<button type="button" id="view"><a id="viewtext"><span class="fa fa-eye"></span></a></button>
-									</td>
-								</tr>
-                            <!-- <tr th:each="coachForm:${coachForms}">
-                                <td th:text="${coachForm.trainee.firstName} +' '+ ${coachForm.trainee.lastName}"></td>
-                                <td th:text="${coachForm.traineePosition}"></td>
-                                <td th:text="${coachForm.creationDate}"></td>
-                                <td th:text="${coachForm.coach.firstName} +' '+ ${coachForm.coach.lastName}"></td>
-
-                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view/coach-form?id=}+${coachForm.id}">View</a></button>
-                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update/coach-form?id=}+${coachForm.id}">Update</a></button>
+								
+                            <tr th:each="progress:${coachform.progress}">
+                                <td th:text="${progress.actionPlan}"></td>
+                                <td th:text="${progress.progressUpdate}"></td>
+                                <td th:text="${progress.creationDate}"></td>
+                                <td>
+									<button type="button" id="view"><a id="viewtext"  target="_blank" th:href="@{/coach/documents/progress/}+${progress.id}">View</a></button>
                                 </td>
-                            </tr> -->
+                            </tr>
                             </tbody>
                         </table>
 						

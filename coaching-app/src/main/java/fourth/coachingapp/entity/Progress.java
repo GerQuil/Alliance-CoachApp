@@ -33,13 +33,13 @@ public class Progress
 	@Column(name = "action_plan")
 	private String actionPlan;
 
-	@Column(name = "progress")
-	private String progress;
+	@Column(name = "progress_update")
+	private String progressUpdate;
 
-	@Column(name = "creation_date")
+	@Column(name = "creation_date", updatable = false)
 	private String creationDate;
 
-	@Column(name = "modified_date")
+	@Column(name = "modified_date", updatable = false)
 	private String modifiedDate;
 
 	public int getId()
@@ -72,14 +72,14 @@ public class Progress
 		this.actionPlan = actionPlan;
 	}
 
-	public String getProgress()
+	public String getProgressUpdate()
 	{
-		return progress;
+		return progressUpdate;
 	}
 
-	public void setProgress(String progress)
+	public void setProgressUpdate(String progressUpdate)
 	{
-		this.progress = progress;
+		this.progressUpdate = progressUpdate;
 	}
 
 	public String getCreationDate()
@@ -105,8 +105,8 @@ public class Progress
 	@Override
 	public String toString()
 	{
-		return "Progress [id=" + id + ", coachForm=" + coachForm + ", progress=" + progress + ", creationDate="
-				+ creationDate + ", modifiedDate=" + modifiedDate + "]";
+		return "Progress [id=" + id + ", coachForm=" + coachForm + ", actionPlan=" + actionPlan + ", progressUpdate="
+				+ progressUpdate + ", creationDate=" + creationDate + ", modifiedDate=" + modifiedDate + "]";
 	}
 
 }

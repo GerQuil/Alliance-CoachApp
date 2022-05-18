@@ -58,10 +58,10 @@ public class CoachForm
 	@Column(name = "timeline")
 	private String timeline;
 
-	@Column(name = "creation_date")
+	@Column(name = "creation_date", updatable = false)
 	private String creationDate;
 
-	@Column(name = "modified_date")
+	@Column(name = "modified_date", updatable = false)
 	private String modifiedDate;
 
 	@OneToMany(fetch = FetchType.EAGER,

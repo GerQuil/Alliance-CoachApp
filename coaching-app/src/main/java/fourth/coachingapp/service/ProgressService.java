@@ -21,6 +21,9 @@ public class ProgressService
 	ProgressRepository progressRepository;
 
 	@Autowired
+	DocumentService documentService;
+
+	@Autowired
 	EmailSenderService emailSender;
 
 	@Autowired
@@ -48,6 +51,7 @@ public class ProgressService
 		progress.setId(0);
 		progress.setCoachForm(coachFormService.getCoachFormById(progress.getCoachForm().getId()));
 		progress = progressRepository.save(progress);
+		documentService.saveDocument(file, "progress", progress.getId());
 
 		String basePath = FileSystems.getDefault()
 				.getPath(".", "src", "main", "resources", "evidence", "progress", progress.getId() + "")
@@ -66,7 +70,9 @@ public class ProgressService
 
 	public void updateProgress(Progress progress, MultipartFile file)
 	{
+		progress.setCoachForm(coachFormService.getCoachFormById(progress.getCoachForm().getId()));
 		progressRepository.save(progress);
+		documentService.saveDocument(file, "progress", progress.getId());
 
 		String basePath = FileSystems.getDefault()
 				.getPath(".", "src", "main", "resources", "evidence", "progress", progress.getId() + "")
@@ -81,6 +87,11 @@ public class ProgressService
 						progress.getCoachForm().getTrainee().getFirstName(),
 						progress.getCoachForm().getTrainee().getLastName()),
 				basePath);
+	}
+
+	public void updateProgress(Progress progress)
+	{
+		progressRepository.save(progress);
 	}
 
 	public void deleteProgress(Progress progress)

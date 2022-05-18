@@ -198,7 +198,7 @@ public class CoachController
 	 * ############################################
 	 */
 	@GetMapping("/add/progress")
-	public String getCoachformProgress(
+	public String getProgress(
 			Model model,
 			@RequestParam(value = "id") int id)
 	{
@@ -209,6 +209,24 @@ public class CoachController
 		model.addAttribute("progress", progress);
 
 		return ("coaches/addprogress");
+	}
+
+	/*
+	 * ############################################
+	 * ############################################
+	 * ########## PROGRESS UPDATE PAGE ############
+	 * ############################################
+	 * ############################################
+	 */
+	@GetMapping("/update/progress")
+	public String updateProgress(
+			Model model,
+			@RequestParam(value = "id") int id)
+	{
+		Progress progress = progressService.getProgressById(id);
+		model.addAttribute("progress", progress);
+
+		return ("coaches/updateprogress");
 	}
 
 	/*
@@ -225,7 +243,7 @@ public class CoachController
 			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
 		progressService.addProgress(progress, file);
-		return "";
+		return "redirect:/coach/update/coach-form?id=" + progress.getCoachForm().getId();
 	}
 
 	/*
@@ -241,8 +259,18 @@ public class CoachController
 			@ModelAttribute Progress progress,
 			@RequestParam(name = "file", required = false) MultipartFile file)
 	{
-		progressService.updateProgress(progress, file);
-		return "";
+
+		log.info(progress.getCoachForm().getId());
+		if(file != null)
+		{
+			progressService.updateProgress(progress, file);
+		}
+		else
+		{
+			progressService.updateProgress(progress);
+		}
+
+		return "redirect:/coach/update/coach-form?id=" + progress.getCoachForm().getId();
 	}
 
 	/*

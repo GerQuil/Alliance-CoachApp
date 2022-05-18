@@ -9,7 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-	<title> Edit Progress Page</title>
+	<title> Update Progress Page</title>
 </head>
 
 <body>
@@ -76,9 +76,10 @@
 			<div class="dashboard-container" style="position: fixed">
 				<div class="box">
 					<a th:href="@{/coach/update/coach-form?id=}+${progress.coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
-					<h4 id="title">EDIT PROGRESS FORM</h4>
+					<h4 id="title">UPDATE PROGRESS FORM</h4>
 					<br>
-					<form th:action="@{coach/updateprog/coach-form}" method="post" th:object="${progress}" enctype="multipart/form-data">
+					<form th:action="@{/coach/update/progress}" method="post" th:object="${progress}" enctype="multipart/form-data">
+						<input type="hidden" th:field="*{id}">
 						<input type="hidden" th:field="*{coachForm.id}">
 						<div style="float:left; width: 49%;">
 							<h6> Action Plan</h6>
@@ -86,22 +87,22 @@
 						</div>
 						<div style="float:right; width: 49%;">
 							<h6> Progress</h6>
-							<textarea th:field = "*{progress}" id="progress" name="progress" class="topic" style="width: 100%;" readonly></textarea>
+							<textarea th:field = "*{progressUpdate}" id="progress" name="progress" class="topic" style="width: 100%;" readonly></textarea>
 						</div>
 						
 						<div class="text-start">
 							<button id="actbutton" class="text-left" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
-							</span>ADD PROGRESS</button>
+							</span>UPDATE PROGRESS</button>
 						</div>
 						
 						<div class="text-center">
-							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
+							<h6>Evidence to Replace Previous<span class="description"><em>(Leave it blank if no update.)</em></span></h6>
 							<div class="topic" style="width: 100%;">
 								<input type="file" name="file" class="topic2"/><br>
 							</div>
 						</div>
 						<div class="d-flex justify-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
-							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
+							<button id="probutton" type="submit" name="submit" style="display:none; visibility:hidden;">SUBMIT</button>
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
 						</div>
 					</form>
