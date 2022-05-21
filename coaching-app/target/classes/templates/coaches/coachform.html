@@ -9,6 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/c favicon-16x16.png">
 
 	<!-- js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -77,7 +78,7 @@
 				</div>
 			</div>
 			<div class="dashboard-container" style="position: fixed">
-				<div class="box">
+				<div class="box" style="height: 500px;">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
 					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
@@ -94,30 +95,30 @@
 						<select th:field = "*{traineePosition}" name="position" class="select"  style="position: relative; top: 70px; float:left; width: 48%;">
 							<option value='Analyst'>Analyst</option>
 							<option value='Tester'>QA Tester</option>
-							<option value='FE Dev'>Front-End Developer</option>
+							<option value='FE Dev' selected>Front-End Developer</option>
 							<option value='BE Dev'>Back-End Developer</option>
 						</select>
 						<input th:field = "*{coach.email}" class="input-field" hidden>
 						<input type="text" th:field = "*{coach.firstName}" class="input-field" style="position: relative; left: 518px; width: 49%;" placeholder="Supervisor/ Manager" readonly>
 						<h6> Coaching Topic/ Area </h6>
-						<textarea th:field = "*{coachingTopic}" name="topic" class="topic"></textarea>
+						<textarea th:field = "*{coachingTopic}" name="topic" class="topic" required></textarea>
 						
 						<h6> Desired Outcome <span class="description"> <em>(list desired behaviors, knowledge, skills, etc.)</em></span></h6>
-						<textarea th:field = "*{desiredOutcome}" name="outcome" class="topic"></textarea>
+						<textarea th:field = "*{desiredOutcome}" name="outcome" class="topic" required></textarea>
 						
 						<h6> Benefits of Change <span class="description"> <em>(How will employee performance be positively impacted?)</em></span></h6>
-						<textarea th:field = "*{benefitsOfChange}" name="benefits" class="topic"></textarea>
+						<textarea th:field = "*{benefitsOfChange}" name="benefits" class="topic" required></textarea>
 						
 						<h6> Action Plan <span class="description"> <em>(What actions should be taken to achieve these goals?)</em></span></h6>
-						<textarea th:field = "*{actionPlan}" name="action" class="topic"></textarea>
+						<textarea th:field = "*{actionPlan}" name="action" class="topic" required></textarea>
 						
 						<h6> Timeline <span class="description"> <em>(Write out a timeline and when to follow up)</em></span></h6>
-						<textarea th:field = "*{timeline}" name="timeline" class="topic"></textarea>
+						<textarea th:field = "*{timeline}" name="timeline" class="topic" required></textarea>
 
 						<div class="text-center" style="position: relative; margin: auto;">
 							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 							<div class="topic" style="position: relative; margin: auto;">
-								<input required type="file" name="file" class="topic2"/><br>
+								<input type="file" name="file" class="topic2" required/><br>
 							</div>
 						</div>
 						

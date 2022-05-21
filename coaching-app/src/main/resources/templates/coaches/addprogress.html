@@ -9,6 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/c favicon-16x16.png">
 	<title> Add Progress Page</title>
 </head>
 
@@ -73,7 +74,7 @@
                 </div>
                 </div>
             </div>
-			<div class="dashboard-container" style="position: fixed">
+			<div class="dashboard-container" style="position: fixed; max-height: 500px;">
 				<div class="box">
 					<a th:href="@{/coach/update/coach-form?id=}+${progress.coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
 					<h4 id="title">ADD PROGRESS FORM</h4>
@@ -97,7 +98,7 @@
 						<div class="text-center">
 							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 							<div class="topic" style="width: 100%;">
-								<input required type="file" name="file" class="topic2"/><br>
+								<input type="file" name="file" class="topic2" required/><br>
 							</div>
 						</div>
 						<div class="d-flex justify-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
@@ -112,6 +113,7 @@
 	<script>
 		function showInput(){
 			document.getElementById("progress").readOnly = false;
+			document.getElementById("progress").required = true;
 			document.getElementById("probutton").style.display = "block";
 			document.getElementById("probutton").style.visibility = "visible";
 			document.getElementById("canbutton").style.display = "block";
@@ -121,6 +123,7 @@
 		}
 		function hideInput(){
 			document.getElementById("progress").readOnly = true;
+			document.getElementById("progress").required = false;
 			document.getElementById("progress").value = "";
 			document.getElementById("probutton").style.display = "none";
 			document.getElementById("probutton").style.visibility = "hidden";

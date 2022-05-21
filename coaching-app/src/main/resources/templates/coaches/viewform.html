@@ -9,6 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/c favicon-16x16.png">
 
 	<!-- js -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -123,7 +124,7 @@
 						<div class="text-center" style="background: grey;">
 							<p>Progress Table</p>
 						</div>
-						<table class="table">
+						<table class="table table-striped table-hover">
                             <thead>
                             <tr>
 								<th class="col">Action Plan</th>
@@ -135,8 +136,8 @@
                             <tbody>
 								
                             <tr th:each="progress:${coachform.progress}">
-                                <td th:text="${progress.actionPlan}"></td>
-                                <td th:text="${progress.progressUpdate}"></td>
+                                <td th:text="${progress.actionPlan}" class="text-start" style="white-space: pre;"></td>
+                                <td th:text="${progress.progressUpdate}" class="text-start" style="white-space: pre;"></td>
                                 <td th:text="${progress.creationDate}"></td>
                                 <td>
 									<button type="button" id="view"><a id="viewtext"  target="_blank" th:href="@{/coach/documents/progress/}+${progress.id}">View</a></button>
