@@ -9,6 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/c favicon-16x16.png">
 	<title> Update Action Plan Page</title>
 </head>
 
@@ -73,7 +74,7 @@
                 </div>
                 </div>
             </div>
-			<div class="dashboard-container" style="position: fixed">
+			<div class="dashboard-container" style="position: fixed; max-height: 500px;">
 				<div class="box">
 					<h4 id="title">UPDATE ACTION PLAN</h4>
 					<br>
@@ -90,7 +91,7 @@
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
 							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 						</div><br><br>
-						<table class="table">
+						<table class="table table-striped table-hover">
                             <thead>
 								<tr>
 									<th class="col">Action Plan</th>
@@ -99,33 +100,21 @@
 									<th class="col">Evidence</th>
 									<th class="col">Action</th>
 								</tr>
-								</thead>
-								<tbody>
-									
+							</thead>
+							<tbody>
 								<tr th:each="progress:${coachform.progress}">
-									<td th:text="${progress.actionPlan}"></td>
-									<td th:text="${progress.progressUpdate}"></td>
+									<td th:text="${progress.actionPlan}" class="text-start" style="white-space: pre;"></td>
+									<td th:text="${progress.progressUpdate}" class="text-start" style="white-space: pre;"></td>
 									<td th:text="${progress.creationDate}"></td>
 									<td>
 										<button type="button" id="view"><a id="viewtext" target="_blank" th:href="@{/coach/documents/progress/}+${progress.id}">View</a></button>
 									</td>
 									<td>
 										<button type="button" id="update"><a th:href="@{/coach/update/progress/?id=}+${progress.id}"  id="updatetext"><span class="fa fa-pencil"></span></a></button>
-										
 									</td>
 								</tr>
-                            <!-- <tr th:each="coachForm:${coachForms}">
-                                <td th:text="${coachForm.trainee.firstName} +' '+ ${coachForm.trainee.lastName}"></td>
-                                <td th:text="${coachForm.traineePosition}"></td>
-                                <td th:text="${coachForm.creationDate}"></td>
-                                <td th:text="${coachForm.coach.firstName} +' '+ ${coachForm.coach.lastName}"></td>
-
-                                <td><button type="button" id="view"><a id="viewtext" th:href="@{/coach/view/coach-form?id=}+${coachForm.id}">View</a></button>
-                                    <button type="button" id="update"><a id="updatetext" th:href="@{/coach/update/coach-form?id=}+${coachForm.id}">Update</a></button>
-                                </td>
-                            </tr> -->
                             </tbody>
-                        </table>
+                        </table><br>
 						<div class="text-center" style="position: relative; margin: auto; top: 80px;">
 							<a th:href="@{/coach/add/progress?id=} + ${coachform.id}" id ="arrow-right"><span class="fa fa-arrow-right"></span> PROCEED TO PROGRESS PAGE</a>
 						</div>
@@ -143,6 +132,7 @@
 			document.getElementById("actbutton").style.display = "none";
 			document.getElementById("actbutton").style.visibility = "hidden";
 			document.getElementById("actionPlan").readOnly = false;
+			document.getElementById("actionPlan").required = true;
 		}
 		function hideInput(){
 			document.getElementById("probutton").style.display = "none";
@@ -152,7 +142,14 @@
 			document.getElementById("actbutton").style.display = "block";
 			document.getElementById("actbutton").style.visibility = "visible";
 			document.getElementById("actionPlan").readOnly = true;
+			document.getElementById("actionPlan").required = false;
 		}
 	</script>
+	<!-- <script>
+		$( document ).ready(function() {
+			$('#action').css({'white-space': 'pre'});
+			$('#progress').css({'white-space': 'pre'});
+		});
+	</script> -->
 </body>
 </html>

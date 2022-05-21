@@ -9,6 +9,7 @@
 	<!-- My CSS -->
 	<link rel="stylesheet" th:href="@{/css/form.css}">
 	<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/c favicon-16x16.png">
 	<title> Update Progress Page</title>
 </head>
 
@@ -73,7 +74,7 @@
                 </div>
                 </div>
             </div>
-			<div class="dashboard-container" style="position: fixed">
+			<div class="dashboard-container" style="position: fixed; max-height: 500px;">
 				<div class="box">
 					<a th:href="@{/coach/update/coach-form?id=}+${progress.coachForm.id}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Update Forms page</p></a>
 					<h4 id="title">UPDATE PROGRESS FORM</h4>
