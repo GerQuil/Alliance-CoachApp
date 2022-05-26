@@ -510,12 +510,9 @@ form .button1 input{
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 .wrapper{
-	float:left;
 	z-index:3;
-	width: 49%;
-	position: relative;
 }
-.wrapper .inputs{
+.inputs{
 	color: black;
 	background: #fff;
 	width: 500px;
@@ -526,10 +523,10 @@ form .button1 input{
 /* #inputs{
 	opacity:0;
 } */
-.wrapper .inputs input{
+/* .wrapper .inputs input{
 	position: relative;
 	z-index:5;
-}
+} */
 .wrapper .inputs .autocom{
 	position: relative;
 	left: 1rem;

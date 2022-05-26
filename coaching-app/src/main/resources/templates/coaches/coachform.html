@@ -78,28 +78,33 @@
 				</div>
 			</div>
 			<div class="dashboard-container" style="position: fixed">
-				<div class="box" style="height: 500px;">
+				<div class="box" style="padding-bottom: 50px;">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
 					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
 						<input id="trainee-email" th:field = "*{trainee.email}" class="input-field" hidden>
-						<div class="wrapper">
-							<div class="inputs">
-								<input th:value="${coachform.trainee.firstName != null}? ${coachform.trainee.firstName}+' '+${coachform.trainee.lastName}: ''" id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
-								<div class="autocom text-start">	
+						<div style="position: relative; display: flex; flex-direction: column;">
+							<div style="position: relative; margin: auto; width: 100%;">
+								<div class="wrapper" style="float: left;">
+									<div class="inputs">
+										<input th:value="${coachform.trainee.firstName != null}? ${coachform.trainee.firstName}+' '+${coachform.trainee.lastName}: ''" id="trainee-field" type="text" class="input-field" placeholder="Team Members Name">
+										<div class="autocom text-start" style="position: relative;">	
+										</div>
+									</div>
 								</div>
+								<input type="datetime" id="date" th:field = "*{creationDate}" class="input-field" style="float: right;" readonly>
+							</div><br>
+							<div style="position: relative; margin: auto; width: 100%;">
+								<select th:field = "*{traineePosition}" name="position" class="select" style="float: left;">
+									<option value='Analyst'>Analyst</option>
+									<option value='Tester'>QA Tester</option>
+									<option value='FE Dev' selected>Front-End Developer</option>
+									<option value='BE Dev'>Back-End Developer</option>
+								</select>
+								<input th:field = "*{coach.email}" class="input-field" hidden>
+								<input type="text" th:field = "*{coach.firstName}" class="input-field" placeholder="Supervisor/ Manager" style="float: right;" readonly>
 							</div>
 						</div>
-						<!-- <ul class="trainee-list"></ul> -->
-						<input type="datetime" id="date" th:field = "*{creationDate}" class="input-field" style="position: relative; float:right; width: 49%;" readonly>
-						<select th:field = "*{traineePosition}" name="position" class="select"  style="position: relative; top: 70px; float:left; width: 48%;">
-							<option value='Analyst'>Analyst</option>
-							<option value='Tester'>QA Tester</option>
-							<option value='FE Dev' selected>Front-End Developer</option>
-							<option value='BE Dev'>Back-End Developer</option>
-						</select>
-						<input th:field = "*{coach.email}" class="input-field" hidden>
-						<input type="text" th:field = "*{coach.firstName}" class="input-field" style="position: relative; left: 518px; width: 49%;" placeholder="Supervisor/ Manager" readonly>
 						<h6> Coaching Topic/ Area </h6>
 						<textarea th:field = "*{coachingTopic}" name="topic" class="topic" required></textarea>
 						

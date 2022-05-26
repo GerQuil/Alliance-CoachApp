@@ -74,8 +74,8 @@
                 </div>
                 </div>
             </div>
-			<div class="dashboard-container" style="position: fixed; max-height: 500px;">
-				<div class="box">
+			<div class="dashboard-container" style="position: fixed;">
+				<div class="box" style="padding-bottom: 200px;">
 					<h4 id="title">UPDATE ACTION PLAN</h4>
 					<br>
 					<a th:href="@{/coach/coach-forms}" class="text-end"><p><span class="fas fa-arrow-left"></span> Back to Forms page</p></a>
@@ -87,7 +87,7 @@
 							<button id="actbutton" class="text-left" type="button" name="append-action" onclick="showInput()"><span class="fa fa-plus">
 							</span> UPDATE ACTION PLAN</button>
 						</div>
-						<div class="d-flex justifsy-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
+						<div class="d-flex justify-content-center" style="position: relative; margin: auto; padding-left: 280px; padding-right: 280px; top: 20px;">
 							<button id="canbutton" type="button" name="cancel" onclick="hideInput()" style="display:none; visibility:hidden;">CANCEL</button>
 							<button id="probutton" type="submit" name="submit" onclick="hideInput()" style="display:none; visibility:hidden;">SUBMIT</button>
 						</div><br><br>
@@ -145,11 +145,5 @@
 			document.getElementById("actionPlan").required = false;
 		}
 	</script>
-	<!-- <script>
-		$( document ).ready(function() {
-			$('#action').css({'white-space': 'pre'});
-			$('#progress').css({'white-space': 'pre'});
-		});
-	</script> -->
 </body>
 </html>
