@@ -75,8 +75,9 @@
                 <div class="box" style="padding-bottom: 50px;">
 				    <h4 id="title">COACHING FORM LIST</h4>
                     <form action="#" method="post" th:object="${coachForms}"> <!--no need to put a form-->
+                        <input type="text" id="search" onkeyup="filter()" placeholder="Search"><br><br>
                         <a th:href='@{/coach/coach-form}' id="add"><img th:src="@{/assets/addscope.svg}" alt="add-button"></a><br>
-                        <table class="table">
+                        <table class="table" id="myTable">
                             <thead>
                             <tr>
                                 <th class="col">Team Member Name</th>
@@ -104,5 +105,27 @@
             </div>
         </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        function filter(){
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+                }
+            }
+        }
+    </script>
 </body>
 </html>
