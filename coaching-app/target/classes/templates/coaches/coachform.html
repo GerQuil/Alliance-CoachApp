@@ -81,28 +81,31 @@
 				<div class="box" style="padding-bottom: 50px;">
 					<h4 id="title">EMPLOYEE COACHING FORM </h4>
 					<br>
-					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-auto">
+					<form th:action="@{/coach/add/coach-form}" method="post" th:object="${coachform}" enctype="multipart/form-data" id="ecform">
 						<input id="trainee-email" th:field = "*{trainee.email}" class="input-field" hidden>
 						<div style="position: relative; display: flex; flex-direction: column;">
-							<div style="position: relative; margin: auto; width: 100%;">
-								<div class="wrapper" style="float: left;">
+							<div style="position: relative; margin: auto; width: 100%;" class="d-flex justify-content-start">
+								<div class="wrapper" style="margin-left:5px;">
 									<div class="inputs">
-										<input th:value="${coachform.trainee.firstName != null}? ${coachform.trainee.firstName}+' '+${coachform.trainee.lastName}: ''" id="trainee-field" type="text" class="input-field" placeholder="Team Members Name" autocomplete="off">
+										<input th:value="${coachform.trainee.firstName != null}? ${coachform.trainee.firstName}+' '+${coachform.trainee.lastName}: ''" id="trainee-field" type="text" class="input-field" placeholder="Team Members Name" autocomplete="off" style="right:0;">
 										<div class="autocom text-start" style="position: relative;">	
 										</div>
 									</div>
 								</div>
-								<input type="datetime" id="date" th:field = "*{creationDate}" class="input-field" style="float: right;" readonly>
-							</div><br>
+								<input type="datetime" id="date" th:field = "*{creationDate}" class="input-field" style="margin-left:520px;" readonly>
+							</div>
 							<div style="position: relative; margin: auto; width: 100%;">
-								<select th:field = "*{traineePosition}" name="position" class="select" style="float: left;">
+								<select th:field = "*{traineePosition}" name="position" class="select">
 									<option value='Analyst'>Analyst</option>
 									<option value='Tester'>QA Tester</option>
 									<option value='FE Dev' selected>Front-End Developer</option>
 									<option value='BE Dev'>Back-End Developer</option>
 								</select>
 								<input th:field = "*{coach.email}" class="input-field" hidden>
-								<input type="text" th:field = "*{coach.firstName}" class="input-field" placeholder="Supervisor/ Manager" style="float: right;" readonly>
+								<input type="text" th:field = "*{coach.firstName}" class="input-field" placeholder="Supervisor/ Manager" readonly>
 							</div>
 						</div>
 						<h6> Coaching Topic/ Area </h6>
@@ -121,17 +124,41 @@
 						<textarea th:field = "*{timeline}" name="timeline" class="topic" required></textarea>
 
 						<div class="text-center" style="position: relative; margin: auto;">
+							<button type="button" id="pdf" onclick="saveForm()">Get PDF copy</button>
 							<h6>Evidence <span class="description"><em>(Attact the evidence here.)</em></span></h6>
 							<div class="topic" style="position: relative; margin: auto;">
-								<input type="file" name="file" class="topic2" required/><br>
+								<input type="file" name="file" class="topic2" required/>
 							</div>
-						</div>
-						
+						</div><br>
 						<button id="subbutton" type="submit" name="submit">SUBMIT</button>
 					</form>
+					</div>
+					</div>
+					</div>
 				</div>
 			</div>
 		</main>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js" integrity="sha512-1qLXyA3x0VSWeM+8vOotn6+KIRGdcQ8QMzsNeDXmdJsUAnoDGjzlxzqAuUGJGrGkGrtOrq4buDoAHxR89D9PWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script>
+		function saveForm(){
+			// var defaultBody = document.body.innerHTML;
+			// var coachForm = $('#ecform').html();
+			// document.body.innerHTML = coachForm;
+			// window.print();
+			// document.body.innerHTML = defaultBody;
+			console.log('here')
+			const form = document.getElementById('ecform');
+			var opt = {
+				margin:       1,
+				filename:     'coachingform.pdf',
+				image:        { type: 'jpeg', quality: 0.98 },
+				html2canvas:  { scale: 2 },
+				jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+				pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+			};
+			html2pdf().set(opt).from(form).save();
+		}
+	</script>
 </body>
 </html>
