@@ -188,7 +188,7 @@ form{
 }
 .topic{
 	position: relative;
-	width:1015px;
+	width:100%;
 	padding: 15px;
 	padding-bottom: 20px;
 	margin: 5px;	
@@ -527,13 +527,20 @@ form .button1 input{
 	border: none;
 	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px;
 }
-/* #inputs{
-	opacity:0;
-} */
-/* .wrapper .inputs input{
-	position: relative;
-	z-index:5;
-} */
+#pdf{
+	color: white; 
+	background: green; 
+	border-radius: 5px; 
+	padding: 10px; 
+	border: none;
+}
+#pdf:hover{
+	color: white; 
+	background: red; 
+	border-radius: 5px; 
+	padding: 10px; 
+	border: none;
+}
 .wrapper .inputs .autocom{
 	position: relative;
 	left: 1rem;
